@@ -1,11 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import MenuTop from "../image-convert-app/src/components/menuCompos/menuTop";
+import MenuLeft from "../image-convert-app/src/components/menuCompos/menuLeft";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+        {/* <MenuTop/> */}
+        <MenuLeft/>
     </View>
   );
 }
@@ -13,8 +14,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#F5F5F5',
   },
 });
