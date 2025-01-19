@@ -11,7 +11,7 @@ import Image2 from "../../../assets/image/icons/image2.png";
 import Image3 from "../../../assets/image/icons/image3.png";
 import Image4 from "../../../assets/image/icons/image4.png";
 import Image5 from "../../../assets/image/icons/image5.png";
-import Avatar from "../../../assets/image/icons/image.png";
+import Avatar from "../../../assets/image/icons/image6.png";
 const menuTop = () => {
   const [zoomLevel, setZoomLevel] = useState("50%");
   const [backgroundColors, setBackgroundColors] = useState({
