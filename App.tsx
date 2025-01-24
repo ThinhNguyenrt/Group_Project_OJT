@@ -1,16 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-// import MenuTop from "../image-convert-app/src/components/menuCompos/menuTop";
-// import MenuLeft from "../image-convert-app/src/components/menuCompos/menuLeft";
-// import OtherThing from "../image-convert-app/src/components/menuCompos/otherThing";
-import ManiTool from "../image-convert-app/src/components/aiTool/maniTool";
-// import TextEffect from "../image-convert-app/src/components/aiTool/textEffect";
+import LayerTool from "../image-convert-app/src/components/aiTool/layerTool";
 export default function App() {
   return (
     <View style={styles.container}>
-        {/* <MenuTop/> */}
-        {/* <OtherThing/> */}
-        <ManiTool/>
+        <LayerTool/>
     </View>
   );
 }

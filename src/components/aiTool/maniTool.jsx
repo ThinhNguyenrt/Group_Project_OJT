@@ -76,9 +76,10 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     uploadText: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#666',
         textAlign: 'center',
+        justifyContent:'center'
     },
     listContainer: {
         flexDirection: 'column',
