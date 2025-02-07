@@ -6,9 +6,11 @@ interface SliderProps {
   label?: string
   maximumValue?: number
   minimumValue?: number
+  initialValue?: number
   fixedPoint?: number
   step?: number
   isPercent?: boolean
+  onValueChange: (value: number) => void
 }
 
 /**
@@ -19,16 +21,27 @@ interface SliderProps {
  * @param fixedPoint Số chữ số thập phân
  * @param step Bước nhảy khi kéo Slider
  * @param isPercent Hiển thị giá trị dưới dạng phần trăm
+ * @param onValueChange Hàm callback trả về giá trị khi thay đổi
  */
 const SlideBar: React.FC<SliderProps> = ({
   label = "Unknown slide",
   minimumValue = 0,
   maximumValue = 100,
+  initialValue = 0,
   fixedPoint = 0,
   step,
   isPercent = true,
+  onValueChange,
 }) => {
-  const [value, setValue] = useState(minimumValue || 0)
+  const [value, setValue] = useState(initialValue)
+
+  const handleChange = (val: number | number[]) => {
+    const newValue = Array.isArray(val) ? val[0] : val
+    setValue(newValue)
+    if (onValueChange) {
+      onValueChange(newValue)
+    }
+  }
 
   let fixedValue = value.toFixed(fixedPoint)
 
@@ -49,7 +62,7 @@ const SlideBar: React.FC<SliderProps> = ({
         maximumTrackTintColor="gray"
         value={value}
         step={step}
-        onValueChange={(val) => setValue(Array.isArray(val) ? val[0] : val)}
+        onValueChange={handleChange}
         thumbStyle={styles.thumb}
         trackStyle={styles.track}
       />
@@ -59,7 +72,7 @@ const SlideBar: React.FC<SliderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "15%",
+    width: "90%",
     marginLeft: 10,
     marginRight: 10,
     alignItems: "stretch",
@@ -77,6 +90,7 @@ const styles = StyleSheet.create({
   track: {
     height: 15,
     borderRadius: 10,
+    justifyContent: "center",
   },
   slideInfo: {
     flexDirection: "row",
