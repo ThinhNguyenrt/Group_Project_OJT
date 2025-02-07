@@ -2,12 +2,12 @@ import React, { useState } from "react"
 import { View, StyleSheet, Animated } from "react-native"
 import TabButton2 from "./TabButton2"
 
-import cubeSphereIcon from "../../../assets/3d-cube-sphere.png"
-import photoIcon from "../../../assets/photo.png"
-import moodCogIcon from "../../../assets/mood-cog.png"
-import vectorSplineIcon from "../../../assets/vector-spline.png"
-import typographyIcon from "../../../assets/typography.png"
-import combineIcon from "../../../assets/brand-supernova.png"
+import cubeSphereIcon from "../../../assets/icons/3d-cube-sphere.png"
+import photoIcon from "../../../assets/icons/photo.png"
+import moodCogIcon from "../../../assets/icons/mood-cog.png"
+import vectorSplineIcon from "../../../assets/icons/vector-spline.png"
+import typographyIcon from "../../../assets/icons/typography.png"
+import combineIcon from "../../../assets/icons/brand-supernova.png"
 
 const TabLeft = () => {
   const [activeIndex, setActiveIndex] = useState(0)
