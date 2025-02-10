@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#d3d3d3",
     borderRadius: 8,
-    backgroundColor: "#e5e5e5",
+    backgroundColor: "#transparent",
     width: 370,
   },
   pickerContainer: {
