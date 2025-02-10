@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    width: "20%",
+    width: "100%",
   },
 })
 
