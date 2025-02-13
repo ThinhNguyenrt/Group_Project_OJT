@@ -14,7 +14,7 @@ import {
   VINTAGE,
   WARM_EFFECT,
   COLD_EFFECT,
-} from "../../constants/filterMatrix"
+} from "../../../constants/filterMatrix"
 import ColorFilterImage from "./FilterButton"
 import FilterTabButton from "./CustomFIlterButton"
 

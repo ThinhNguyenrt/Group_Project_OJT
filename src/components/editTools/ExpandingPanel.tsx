@@ -13,12 +13,12 @@ interface DropdownItemProps {
   children: React.ReactNode
 }
 
-const DropdownItem: React.FC<DropdownItemProps> = ({
+const ExpandingPanel: React.FC<DropdownItemProps> = ({
   headerTitle,
   children,
 }) => {
   const [expanded, setExpanded] = useState(false)
-  const animation = useRef(new Animated.Value(0)).current // Giá trị animated ban đầu
+  const animation = useRef(new Animated.Value(0)).current
 
   const toggleDropdown = () => {
     setExpanded(!expanded)
@@ -41,7 +41,6 @@ const DropdownItem: React.FC<DropdownItemProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* Header - Click để mở rộng */}
       <TouchableOpacity onPress={toggleDropdown} style={styles.header}>
         <Text style={styles.title}>{headerTitle}</Text>
         <Animated.View style={{ transform: [{ rotate }] }}>
@@ -95,4 +94,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default DropdownItem
+export default ExpandingPanel
