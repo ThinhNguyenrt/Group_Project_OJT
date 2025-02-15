@@ -55,9 +55,6 @@ const menuLeft =() =>{
               <Text style={styles.upgradeText}>Upgrade</Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.iconWrapper}>
-            <FontAwesome6 name="gem" size={24} color="black" />
-          </View>
         </View>
       </View>
     );
@@ -149,19 +146,5 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: "bold",
         color: "black",
-      },
-      iconWrapper: {
-        width: 50,
-        height: 50,
-        borderRadius: 10,
-        backgroundColor: "#fff",
-        justifyContent: "center",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        shadowOffset: { width: 0, height: 2 },
-        // elevation: 3,
-        marginLeft: 20, // Giảm khoảng cách từ 15px đến 20px
-      },    
+      }
   });
