@@ -14,7 +14,7 @@ import {
   VINTAGE,
   WARM_EFFECT,
   COLD_EFFECT,
-} from "../../constants/filterMatrix"
+} from "../../../constants/filterMatrix"
 import ColorFilterImage from "./FilterButton"
 import FilterTabButton from "./CustomFIlterButton"
 
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     flexWrap: "wrap",
-    width: "20%",
+    width: "100%",
   },
 })
 

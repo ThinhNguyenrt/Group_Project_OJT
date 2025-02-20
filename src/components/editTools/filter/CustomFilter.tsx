@@ -7,7 +7,7 @@ import Svg, {
   FeGaussianBlur,
   Image as SvgImage,
 } from "react-native-svg"
-import SlideBar from "./SlideBar"
+import SlideBar from "../SlideBar"
 
 const AdjustableFilterImage = ({
   imageUri,

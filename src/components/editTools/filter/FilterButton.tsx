@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     width: "15%",
     aspectRatio: 1,
+    margin: 4,
   },
   image: {
     width: "100%",
