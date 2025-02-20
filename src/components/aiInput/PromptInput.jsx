@@ -1,27 +1,45 @@
-import React from "react";
-import { View, TextInput, StyleSheet } from "react-native";
+import React from 'react';
+import { View, TextInput, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const PromptInput = () => {
   return (
-    <View style={styles.inputContainer}>
+    <View style={styles.container}>
+      <Icon name="sparkles" size={20} color="gray" style={styles.iconLeft} />
       <TextInput
-        style={styles.input}
         placeholder="Describe the image you want to generate"
+        placeholderTextColor="gray"
+        style={styles.input}
       />
+      <Icon name="send" size={20} color="gray" style={styles.iconRight} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    marginTop: 10,
-    padding: 10,
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderWidth: 1,
+    borderColor: 'purple',
     borderRadius: 10,
-    borderColor: "#ccc",
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    position: 'relative',
   },
   input: {
-    fontSize: 16,
+    flex: 1,
+    fontSize: 14,
+    color: 'black',
+    paddingHorizontal: 10,
+  },
+  iconLeft: {
+    position: 'absolute',
+    left: 10,
+  },
+  iconRight: {
+    position: 'absolute',
+    right: 10,
   },
 });
 
