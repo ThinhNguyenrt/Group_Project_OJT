@@ -41,7 +41,7 @@ const InputSwitch: React.FC<InputSwitchProps> = ({
 const styles = StyleSheet.create({
   container: {
     width: "98%",
-    height: "6%",
+    height: "100%",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#d9d7d7",
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: "3%",
     marginRight: "4%",
-    width: "12%",
-    height: "75%",
+    width: "5%",
+    height: "50%",
   },
   label: {
     fontSize: 14,

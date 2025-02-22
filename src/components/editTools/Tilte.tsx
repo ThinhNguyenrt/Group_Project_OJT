@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Animated,
   StyleSheet,
+  LayoutChangeEvent,
 } from "react-native"
 import { Svg, Path } from "react-native-svg"
 
@@ -13,12 +14,10 @@ interface DropdownItemProps {
   children: React.ReactNode
 }
 
-const ExpandingPanel: React.FC<DropdownItemProps> = ({
-  headerTitle,
-  children,
-}) => {
+const Title: React.FC<DropdownItemProps> = ({ headerTitle, children }) => {
   const [expanded, setExpanded] = useState(false)
   const animation = useRef(new Animated.Value(0)).current
+  const [contentHeight, setContentHeight] = useState(0)
 
   const toggleDropdown = () => {
     setExpanded(!expanded)
@@ -36,7 +35,7 @@ const ExpandingPanel: React.FC<DropdownItemProps> = ({
 
   const animatedHeight = animation.interpolate({
     inputRange: [0, 1],
-    outputRange: [0, 100],
+    outputRange: [0, contentHeight],
   })
 
   return (
@@ -68,7 +67,14 @@ const ExpandingPanel: React.FC<DropdownItemProps> = ({
           { height: animatedHeight, overflow: "hidden" },
         ]}
       >
-        {children}
+        <View
+          style={styles.content}
+          onLayout={(event: LayoutChangeEvent) =>
+            setContentHeight(event.nativeEvent.layout.height)
+          }
+        >
+          {children}
+        </View>
       </Animated.View>
     </View>
   )
@@ -76,7 +82,7 @@ const ExpandingPanel: React.FC<DropdownItemProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "20%",
+    width: "100%",
   },
   header: {
     flexDirection: "row",
@@ -92,6 +98,10 @@ const styles = StyleSheet.create({
   dropdown: {
     paddingHorizontal: 10,
   },
+  content: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  },
 })
 
-export default ExpandingPanel
+export default Title
