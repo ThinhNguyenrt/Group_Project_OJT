@@ -1,12 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-
-import MenuLeftTwo from "../image-convert-app/src/components/menuCompos/menuLeftTwo";
+import ColorAdjust from "../image-convert-app/src/components/editTool/ColorAdjustment";
 export default function App() {
   return (
-    <View style={styles.container}>  
-        <MenuLeftTwo/>
-
+    <View style={styles.container}>
+      <ColorAdjust/>
     </View>
   );
 }
