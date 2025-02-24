@@ -15,6 +15,7 @@ import { Animated, TouchableWithoutFeedback, StyleSheet } from "react-native"
  */
 const Switch = ({
   onValueChange = (val: boolean) => {},
+  defaultVal = false,
   backgroundActive = "#CFEB92",
   backgroundInactive = "gray",
   circleActiveColor = "white",
@@ -24,7 +25,7 @@ const Switch = ({
   circleSize = 12,
   disabled = false,
 }) => {
-  const [switchValue, setSwitchValue] = useState(false)
+  const [switchValue, setSwitchValue] = useState(defaultVal)
   const translateX = useState(
     new Animated.Value(switchValue ? switchWidth - circleSize - 2 : 2)
   )[0]
@@ -49,8 +50,6 @@ const Switch = ({
         style={[
           styles.switchContainer,
           {
-            width: switchWidth,
-            height: switchHeight,
             backgroundColor: switchValue
               ? backgroundActive
               : backgroundInactive,
@@ -82,6 +81,8 @@ const styles = StyleSheet.create({
     padding: 2,
     position: "relative",
     borderRadius: 50,
+    width: 40,
+    height: 20,
   },
   circle: {
     position: "absolute",
