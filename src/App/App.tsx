@@ -1,10 +1,12 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import ColorAdjust from "../image-convert-app/src/components/editTool/ColorAdjustment";
+import TrashList from '../components/dashboard/TrashList';
+
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <ColorAdjust/>
+    <View style={styles.container}>  
+        <TrashList/>
     </View>
   );
 }
