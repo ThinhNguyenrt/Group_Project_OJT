@@ -61,7 +61,7 @@ const InputComponent = () => {
           <Ionicons
             name={isDropdownVisible ? "chevron-up" : "chevron-down"}
             size={20}
-            color="#333"
+            color="#666666"
             style={styles.icon}
           />
         </TouchableOpacity>
@@ -122,7 +122,7 @@ const InputComponent = () => {
           <Ionicons
             name={isColorDropdownVisible ? "chevron-up" : "chevron-down"}
             size={20}
-            color="#333"
+            color="#666666"
             style={styles.icon}
           />
         </TouchableOpacity>

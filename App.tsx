@@ -1,13 +1,15 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import BrushMenu from "./src/components/editTools/brush/BrushSettings";
+import MaterialSettings from './src/components/editTools/material/MaterialSettings';
+
 export default function App() {
   const handleSettingsChange = (settings) => {
-    console.log('Brush settings changed:', settings);
+    console.log('Material settings changed:', settings);
   };
+
   return (
     <View style={styles.container}>
-      <BrushMenu onSettingsChange={handleSettingsChange} />
+      <MaterialSettings onSettingsChange={handleSettingsChange} />
     </View>
   );
 }

@@ -100,25 +100,6 @@ const styles = StyleSheet.create({
   slideInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 8,
-  },
-  label: {
-    fontSize: 14,
-    color: "#333333",
-    fontWeight: "500",
-  },
-  valueBox: {
-    backgroundColor: "#F7F7F7",
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 4,
-  },
-  value: {
-    fontSize: 12,
-    color: "#666666",
-    fontWeight: "500",
   },
 })
-
 export default SlideBar
