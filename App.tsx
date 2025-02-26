@@ -1,15 +1,15 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import MaterialSettings from './src/components/editTools/material/MaterialSettings';
+import ImageSettings from './src/components/editTools/image/ImageSettings';
 
 export default function App() {
   const handleSettingsChange = (settings) => {
-    console.log('Material settings changed:', settings);
+    console.log('Image settings changed:', settings);
   };
 
   return (
     <View style={styles.container}>
-      <MaterialSettings onSettingsChange={handleSettingsChange} />
+      <ImageSettings onSettingsChange={handleSettingsChange} />
     </View>
   );
 }

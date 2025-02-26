@@ -76,7 +76,7 @@ const MaterialSettings: React.FC<MaterialSettingsProps> = ({ onSettingsChange })
 
   return (
     <View style={styles.container}>
-      {/* Material Section Header */}
+      {/* Material Section */}
       <View style={styles.section}>
         <TouchableOpacity 
           style={styles.sectionHeader} 
@@ -91,7 +91,6 @@ const MaterialSettings: React.FC<MaterialSettingsProps> = ({ onSettingsChange })
           />
         </TouchableOpacity>
         
-        {/* All Panel Content - Only show when material section is expanded */}
         {expandedSections.material && (
           <View style={styles.sectionContent}>
             {/* Metal Color Section */}
@@ -159,135 +158,135 @@ const MaterialSettings: React.FC<MaterialSettingsProps> = ({ onSettingsChange })
               }
               isPercent={false}
             />
+          </View>
+        )}
+      </View>
 
-            {/* Filter Section */}
-            <TouchableOpacity 
-              style={styles.colorButton}
-              onPress={() => toggleSection('filter')}
-            >
-              <View style={styles.colorButtonContent}>
-                <Text style={styles.colorText}>Filter</Text>
-              </View>
-              <Ionicons
-                name={expandedSections.filter ? "chevron-down" : "chevron-up"}
-                size={20}
-                color="#666666"
-                style={styles.expandIcon}
+      {/* Filter Section */}
+      <View style={styles.section}>
+        <TouchableOpacity 
+          style={styles.sectionHeader}
+          onPress={() => toggleSection('filter')}
+        >
+          <Text style={styles.sectionTitle}>Filter</Text>
+          <Ionicons
+            name={expandedSections.filter ? "chevron-down" : "chevron-up"}
+            size={20}
+            color="#666666"
+            style={styles.expandIcon}
+          />
+        </TouchableOpacity>
+
+        {expandedSections.filter && (
+          <View style={styles.sectionContent}>
+            <View style={styles.filterGrid}>
+              {filters.map((filter, index) => (
+                <TouchableOpacity
+                  key={filter.id}
+                  style={[
+                    styles.filterItem,
+                    settings.selectedFilter === index && styles.selectedFilter,
+                  ]}
+                  onPress={() => handleFilterSelect(index)}
+                >
+                  <View
+                    style={[
+                      styles.filterPreview,
+                      { backgroundColor: filter.color },
+                    ]}
+                  />
+                </TouchableOpacity>
+              ))}
+              <TouchableOpacity style={styles.filterItem}>
+                <Text style={styles.plusIcon}>+</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      </View>
+
+      {/* Effect Section */}
+      <View style={styles.section}>
+        <TouchableOpacity 
+          style={styles.sectionHeader}
+          onPress={() => toggleSection('effect')}
+        >
+          <Text style={styles.sectionTitle}>Effect</Text>
+          <Ionicons
+            name={expandedSections.effect ? "chevron-down" : "chevron-up"}
+            size={20}
+            color="#666666"
+            style={styles.expandIcon}
+          />
+        </TouchableOpacity>
+
+        {expandedSections.effect && (
+          <View style={styles.sectionContent}>
+            <View style={styles.effectContent}>
+              <SlideBar
+                label="Glow"
+                minimumValue={0}
+                maximumValue={100}
+                initialValue={0}
+                onValueChange={(value) =>
+                  console.log('Glow effect:', value)
+                }
+                isPercent={false}
               />
-            </TouchableOpacity>
-
-            {expandedSections.filter && (
-              <View style={styles.metalColorContent}>
-                <View style={styles.filterGrid}>
-                  {filters.map((filter, index) => (
-                    <TouchableOpacity
-                      key={filter.id}
-                      style={[
-                        styles.filterItem,
-                        settings.selectedFilter === index && styles.selectedFilter,
-                      ]}
-                      onPress={() => handleFilterSelect(index)}
-                    >
-                      <View
-                        style={[
-                          styles.filterPreview,
-                          { backgroundColor: filter.color },
-                        ]}
-                      />
-                    </TouchableOpacity>
-                  ))}
-                  <TouchableOpacity style={styles.filterItem}>
-                    <Text style={styles.plusIcon}>+</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            )}
-
-            {/* Effect Section */}
-            <TouchableOpacity 
-              style={styles.colorButton}
-              onPress={() => toggleSection('effect')}
-            >
-              <View style={styles.colorButtonContent}>
-                <Text style={styles.colorText}>Effect</Text>
-              </View>
-              <Ionicons
-                name={expandedSections.effect ? "chevron-down" : "chevron-up"}
-                size={20}
-                color="#666666"
-                style={styles.expandIcon}
+              <SlideBar
+                label="Blur"
+                minimumValue={0}
+                maximumValue={100}
+                initialValue={0}
+                onValueChange={(value) =>
+                  console.log('Blur effect:', value)
+                }
+                isPercent={false}
               />
-            </TouchableOpacity>
+            </View>
+          </View>
+        )}
+      </View>
 
-            {expandedSections.effect && (
-              <View style={styles.metalColorContent}>
-                <View style={styles.effectContent}>
-                  <SlideBar
-                    label="Glow"
-                    minimumValue={0}
-                    maximumValue={100}
-                    initialValue={0}
-                    onValueChange={(value) =>
-                      console.log('Glow effect:', value)
-                    }
-                    isPercent={false}
-                  />
-                  <SlideBar
-                    label="Blur"
-                    minimumValue={0}
-                    maximumValue={100}
-                    initialValue={0}
-                    onValueChange={(value) =>
-                      console.log('Blur effect:', value)
-                    }
-                    isPercent={false}
-                  />
-                </View>
-              </View>
-            )}
+      {/* Cloner Section */}
+      <View style={styles.section}>
+        <TouchableOpacity 
+          style={styles.sectionHeader}
+          onPress={() => toggleSection('cloner')}
+        >
+          <Text style={styles.sectionTitle}>Cloner</Text>
+          <Ionicons
+            name={expandedSections.cloner ? "chevron-down" : "chevron-up"}
+            size={20}
+            color="#666666"
+            style={styles.expandIcon}
+          />
+        </TouchableOpacity>
 
-            {/* Cloner Section */}
-            <TouchableOpacity 
-              style={styles.colorButton}
-              onPress={() => toggleSection('cloner')}
-            >
-              <View style={styles.colorButtonContent}>
-                <Text style={styles.colorText}>Cloner</Text>
-              </View>
-              <Ionicons
-                name={expandedSections.cloner ? "chevron-down" : "chevron-up"}
-                size={20}
-                color="#666666"
-                style={styles.expandIcon}
+        {expandedSections.cloner && (
+          <View style={styles.sectionContent}>
+            <View style={styles.clonerContent}>
+              <SlideBar
+                label="Count"
+                minimumValue={1}
+                maximumValue={10}
+                initialValue={1}
+                onValueChange={(value) =>
+                  console.log('Clone count:', value)
+                }
+                isPercent={false}
               />
-            </TouchableOpacity>
-
-            {expandedSections.cloner && (
-              <View style={styles.metalColorContent}>
-                <View style={styles.clonerContent}>
-                  <SlideBar
-                    label="Count"
-                    minimumValue={1}
-                    maximumValue={10}
-                    initialValue={1}
-                    onValueChange={(value) =>
-                      console.log('Clone count:', value)
-                    }
-                    isPercent={false}
-                  />
-                  <SlideBar
-                    label="Spacing"
-                    minimumValue={0}
-                    maximumValue={100}
-                    initialValue={10}
-                    onValueChange={(value) =>
-                      console.log('Clone spacing:', value)
-                    }
-                    isPercent={false}
-                  />
-                </View>
-              </View>
-            )}
+              <SlideBar
+                label="Spacing"
+                minimumValue={0}
+                maximumValue={100}
+                initialValue={10}
+                onValueChange={(value) =>
+                  console.log('Clone spacing:', value)
+                }
+                isPercent={false}
+              />
+            </View>
           </View>
         )}
       </View>
