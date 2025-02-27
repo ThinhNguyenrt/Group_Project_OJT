@@ -114,7 +114,11 @@ const DashTwo = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f8f8f8", padding: 10 },
+  container: { 
+    flex: 1, 
+    backgroundColor: "#f8f8f8", 
+    
+  },
   header: {
     flexDirection: "row",
     justifyContent: "space-between",

@@ -13,6 +13,13 @@ const designs = [
     { id: '5', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Floor Lamp', edited: '2', size: '3.06 MB', lastViewed: '5 days ago' },
     { id: '6', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Handle', edited: '5', size: '4.92 MB', lastViewed: '5 days ago' },
     { id: '7', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Panel Curtain', edited: '2', size: '4.76 MB', lastViewed: '5 days ago' },
+    { id: '8', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'The house', edited: '1', size: '1 GB', lastViewed: 'N/A' },
+    { id: '9', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Garden', edited: '3', size: '12 MB', lastViewed: 'N/A' },
+    { id: '10', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Tea', edited: '1', size: '3.8 MB', lastViewed: 'N/A' },
+    { id: '11', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Character', edited: '3', size: '2 GB', lastViewed: 'N/A' },
+    { id: '12', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Floor Lamp', edited: '2', size: '3.06 MB', lastViewed: '5 days ago' },
+    { id: '13', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Handle', edited: '5', size: '4.92 MB', lastViewed: '5 days ago' },
+    { id: '14', imageUrl: 'https://kyluc.vn/userfiles/upload/images/modules/news/2016/7/11/0_hinh-anh-thien-nhien-dep-nhat-th-gioi.jpg', name: 'Panel Curtain', edited: '2', size: '4.76 MB', lastViewed: '5 days ago' },
 ];
 
 const TrashList = () =>{
@@ -44,7 +51,6 @@ const TrashList = () =>{
         setSortData(value);
         handSort(value);
     } 
-
     
     return(
         <ScrollView>

@@ -15,16 +15,20 @@ const menuTopTwo = () => {
 
       {/* Bên phải */}
       <View style={styles.rightContainer}>
+
         <View style={styles.searchBox}>
           <Feather name="search" size={20} color="#888" style={styles.searchIcon} />
           <TextInput placeholder="Search files" style={styles.searchInput} />
         </View>
-        <TouchableOpacity>
+
+        <TouchableOpacity style={styles.marginRight}>
           <Ionicons name="notifications-outline" size={24} color="black" style={styles.icon} />
         </TouchableOpacity>
-        <TouchableOpacity>
-            <Feather name="settings" size={24} color="black" style={styles.icon}/>
+
+        <TouchableOpacity style={styles.marginRight}>
+            <Feather name="settings" size={20} color="black" style={styles.icon}/>
         </TouchableOpacity>
+
         <Image source={Avatar} style={styles.avatar} />
       </View>
     </View>
@@ -40,43 +44,51 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
+    backgroundColor: '#E8E8E8',
   },
   leftContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginLeft: 10,
   },
   logo: {
-    width: 35,
-    height: 35,
+    width: 40,
+    height: 40,
     resizeMode: "contain",
     marginRight: 10,
   },
   aiImageText: {
-    fontSize: 27,
+    fontSize: 25,
     fontWeight: "bold",
     color: "#000",
   },
   rightContainer: {
     flexDirection: "row",
     alignItems: "center",
+    marginRight: 20,
   },
   searchBox: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#f5f5f5",
-    borderRadius: 8,
+    backgroundColor: "#E0E0E0",
+    borderRadius: 10,
     paddingHorizontal: 10,
-    height: 40,
-    width:280,
-    marginRight: 15,
+    height: 35,
+    width:250,
+    marginRight: 50,
   },
   searchIcon: {
     marginRight: 5,
   },
   searchInput: {
-    fontSize: 16,
+    fontSize: 15,
     color: "#000",
-    width: 120,
+    width: 200,
+    height: 25,
+    borderWidth: 0,
+    outlineStyle: "none",  //xóa viền focus theo ios, web
+    textDecorationLine: "none", //xóa gạch chân
+    fontFamily: 'Arial',
   },
   icon: {
     marginHorizontal: 10,
@@ -88,4 +100,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#ccc",
   },
+  marginRight: {
+    marginRight: 30,
+  }
 });

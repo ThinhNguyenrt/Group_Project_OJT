@@ -1,13 +1,21 @@
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View } from 'react-native';
-import TrashList from '../components/dashboard/TrashList';
+import HomeScreen from '../actions/home';
+import DashThree from '../components/dashboard/dashThree';
 
+const Stack = createStackNavigator();
 
 export default function App() {
+  
   return (
-    <View style={styles.container}>  
-        <TrashList/>
-    </View>
+      <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
+            <Stack.Screen name="Detail" component={DashThree} />
+          </Stack.Navigator>
+      </NavigationContainer>
   );
 }
 
