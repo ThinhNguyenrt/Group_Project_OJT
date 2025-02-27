@@ -1,15 +1,12 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import ImageSettings from '../components/editTools/image/ImageSettings';
+import ColorAdjust from '../components/editTool/ColorAdjustment';
 
 export default function App() {
-  const handleSettingsChange = (settings) => {
-    console.log('Image settings changed:', settings);
-  };
 
   return (
     <View style={styles.container}>
-      <ImageSettings onSettingsChange={handleSettingsChange} />
+      <ColorAdjust/>
     </View>
   );
 }
