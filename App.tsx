@@ -4,7 +4,8 @@ import ColorAdjust from "../image-convert-app/src/components/editTool/ColorAdjus
 export default function App() {
   return (
     <View style={styles.container}>
-      <ColorAdjust/>
+      <ColorAdjust
+      />
     </View>
   );
 }
