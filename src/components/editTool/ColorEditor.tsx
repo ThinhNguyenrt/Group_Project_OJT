@@ -12,8 +12,21 @@ const ColorEditor = () => {
 
   const gestureHandler = useAnimatedGestureHandler({
     onActive: (event) => {
-      circleX.value = event.translationX;
-      circleY.value = event.translationY;
+      const newX = event.translationX;
+      const newY = event.translationY;
+      
+      // Tính khoảng cách từ tâm (0,0) đến điểm di chuyển
+      const distance = Math.sqrt(newX * newX + newY * newY);
+  
+      // Nếu vượt quá bán kính, giới hạn lại vị trí
+      if (distance > CIRCLE_RADIUS) {
+        const angle = Math.atan2(newY, newX);
+        circleX.value = CIRCLE_RADIUS * Math.cos(angle);
+        circleY.value = CIRCLE_RADIUS * Math.sin(angle);
+      } else {
+        circleX.value = newX;
+        circleY.value = newY;
+      }
     },
   });
 
