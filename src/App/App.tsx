@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import ColorAdjust from '../components/editTool/ColorAdjustment';
+import DashThree from '../components/dashboard/dashThree';
 
 export default function App() {
 
   return (
     <View style={styles.container}>
-      <ColorAdjust/>
+      {/* <ColorAdjust/> */}
+      <DashThree/>
     </View>
   );
 }

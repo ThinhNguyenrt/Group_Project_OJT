@@ -26,10 +26,10 @@ const DashThree = () => {
         flex: 1,
         flexDirection: "row",
         backgroundColor: "#F5F5F5",
-        borderWidth: 5, 
-        borderColor: "gray", 
-        borderRadius: 20, 
-        padding: 10 ,
+        borderWidth: 5,
+        borderColor: "gray",
+        borderRadius: 20,
+        padding: 10,
         margin: 10,
       }}
     >
@@ -44,13 +44,12 @@ const DashThree = () => {
         >
           <TouchableOpacity>
             <AntDesign
-            name="close"
-            size={24}
-            color="black"
-            style={{ marginRight: 10 }}
-          />
+              name="close"
+              size={24}
+              color="black"
+              style={{ marginRight: 10 }}
+            />
           </TouchableOpacity>
-          
 
           <Image
             source={{
@@ -62,16 +61,21 @@ const DashThree = () => {
             <Text style={{ fontWeight: "bold", fontSize: 16 }}>David</Text>
             <Text style={{ color: "gray" }}>@David205</Text>
           </View>
-          <View style={{ flexDirection: "row", marginLeft: 550 }}>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              marginLeft: "auto",
+            }}
+          >
             <TouchableOpacity
               style={{
                 backgroundColor: "white",
                 padding: 10,
                 borderRadius: 12,
-                marginRight: 10,
                 flexDirection: "row",
                 alignItems: "center",
-                width: 110,
+                marginRight: 5, // Khoảng cách nhỏ giữa Like & Use
               }}
             >
               <AntDesign
@@ -87,8 +91,6 @@ const DashThree = () => {
                 backgroundColor: "black",
                 padding: 10,
                 borderRadius: 12,
-                width: 110,
-                textAlign:"center"
               }}
             >
               <Text style={{ color: "white" }}>Use</Text>
@@ -131,44 +133,40 @@ const DashThree = () => {
             </TouchableOpacity>
           </View>
         </View>
-
         <Text
           style={{
             fontWeight: "bold",
-            marginBottom: 10,
-            marginTop: 20,
             fontSize: 15,
-            marginLeft: 50,
+            marginTop: 5,
           }}
         >
           You might also like
         </Text>
-  
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "white",
-              width: 700,
-              marginLeft: 50,
-              padding: 10,
-              borderRadius: 10,
-            }}
-          >
-            {houseImages.map((image, index) => (
-              <Image
-                key={index}
-                source={{ uri: image }}
-                style={{
-                  width: 150,
-                  height: 110,
-                  borderRadius: 10,
-                  marginHorizontal: 5, // Đảm bảo khoảng cách đều
-                }}
-              />
-            ))}
-          </View>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "white",
+            width: "100%",
+            padding: 10,
+            borderRadius: 10,
+            marginTop: 20,
+          }}
+        >
+          {houseImages.map((image, index) => (
+            <Image
+              key={index}
+              source={{ uri: image }}
+              style={{
+                width: 80,
+                height: 80,
+                borderRadius: 10,
+                marginHorizontal: 10, // Khoảng cách đều giữa các hình
+              }}
+            />
+          ))}
+        </View>
       </View>
 
       {/* Right Side - Feedback */}
