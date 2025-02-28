@@ -1,11 +1,10 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import ColorAdjust from "../image-convert-app/src/components/editTool/ColorAdjustment";
+import DashThree from "../image-convert-app/src/components/dashboard/dashThree";
 export default function App() {
   return (
     <View style={styles.container}>
-      <ColorAdjust
-      />
+      <DashThree/>
     </View>
   );
 }

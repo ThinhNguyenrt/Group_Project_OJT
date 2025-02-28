@@ -1,5 +1,5 @@
-import { StyleSheet, View, Text, ScrollView, Image } from "react-native";
-import React from "react";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Image24 from "../../../assets/aiToolImage/image24.png";
 import Image25 from "../../../assets/aiToolImage/image25.png";
@@ -10,100 +10,54 @@ import Image29 from "../../../assets/aiToolImage/image29.png";
 import Image30 from "../../../assets/aiToolImage/image30.png";
 import Image31 from "../../../assets/aiToolImage/image31.png";
 import Image32 from "../../../assets/aiToolImage/image32.png";
-const layerTool = () => {
+
+const LayerTool = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   return (
     <View style={styles.container}>
       <Text style={styles.layerText}>Layer</Text>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <View style={styles.imageContainerLarge}>
-          <AntDesign
-            name="right"
-            size={24}
-            color="black"
-            style={[styles.icon]} // Điều chỉnh vị trí của icon
-          />
-          <View style={styles.imageContainer}>
-            <Image source={Image24} style={styles.image} />
-          </View>
-        </View>
-        <View style={styles.imageContainerLarge}>
-          <AntDesign
-            name="right"
-            size={24}
-            color="black"
-            style={[styles.icon]} // Điều chỉnh vị trí của icon
-          />
-          <View style={styles.imageContainer}>
-            <Image source={Image25} style={styles.image} />
-          </View>
-        </View>
-        <View style={styles.imageContainerLarge}>
-          <AntDesign
-            name="down"
-            size={24}
-            color="black"
-            style={[styles.icon]} // Điều chỉnh vị trí của icon
-          />
-          <View style={styles.imageContainer}>
-            <Image source={Image26} style={styles.image} />
-          </View>
-        </View>
-        <View style={styles.lineContainer}>
-          {/* Image27 */}
-          <View style={styles.row}>
-            <View style={styles.verticalLineLeft} /> {/* Đường thẳng xuất phát từ bên trái */}
-            <View style={styles.imageContainerSmall}>
-              <Image source={Image27} style={styles.image} />
+        {[Image24, Image25].map((img, index) => (
+          <View key={index} style={styles.imageContainerLarge}>
+            <AntDesign name="right" size={24} color="#444" style={styles.icon} />
+            <View style={styles.imageContainer}>
+              <Image source={img} style={styles.image} />
             </View>
           </View>
-          {/* Đường thẳng nối từ Image27 xuống Image28 */}
-          <View style={styles.verticalLine} />
+        ))}
 
-          {/* Image28 */}
-          <View style={styles.row}>
-            <View style={styles.verticalLineLeft} /> {/* Đường thẳng xuất phát từ bên trái */}
-            <View style={styles.imageContainerSmall}>
-              <Image source={Image28} style={styles.image} />
+        <TouchableOpacity onPress={() => setIsExpanded(!isExpanded)}>
+          <View style={styles.imageContainerLarge}>
+            <AntDesign 
+              name={isExpanded ? "down" : "right"} 
+              size={24} 
+              color="#444" 
+              style={styles.icon} 
+            />
+            <View style={styles.imageContainer}>
+              <Image source={Image26} style={styles.image} />
             </View>
           </View>
-          {/* Đường thẳng nối từ Image28 xuống Image29 */}
-          <View style={styles.verticalLine} />
+        </TouchableOpacity>
 
-          {/* Image29 */}
-          <View style={styles.row}>
-            <View style={styles.verticalLineLeft} /> {/* Đường thẳng xuất phát từ bên trái */}
-            <View style={styles.imageContainerSmall}>
-              <Image source={Image29} style={styles.image} />
-            </View>
+        {isExpanded && (
+          <View style={styles.expandedContainer}>
+            {[Image27, Image28, Image29, Image30, Image31].map((img, index, array) => (
+              <View key={index} style={styles.row}>
+                {/* Đường thẳng nối liền */}
+                {index !== array.length  && <View style={styles.verticalLine} />}
+                <View style={styles.horizontalLine} />
+                <View style={styles.imageContainerSmall}>
+                  <Image source={img} style={styles.image} />
+                </View>
+              </View>
+            ))}
           </View>
-          {/* Đường thẳng nối từ Image29 xuống Image30 */}
-          <View style={styles.verticalLine} />
+        )}
 
-          {/* Image30 */}
-          <View style={styles.row}>
-            <View style={styles.verticalLineLeft} /> {/* Đường thẳng xuất phát từ bên trái */}
-            <View style={styles.imageContainerSmall}>
-              <Image source={Image30} style={styles.image} />
-            </View>
-          </View>
-          {/* Đường thẳng nối từ Image30 xuống Image31 */}
-          <View style={styles.verticalLine} />
-
-          {/* Image31 */}
-          <View style={styles.row}>
-            <View style={styles.verticalLineLeft} /> {/* Đường thẳng xuất phát từ bên trái */}
-            <View style={styles.imageContainerSmall}>
-              <Image source={Image31} style={styles.image} />
-            </View>
-          </View>
-        </View>
         <View style={[styles.imageContainerLarge, { marginBottom: 250 }]}>
-          <AntDesign
-            name="right"
-            size={24}
-            color="black"
-            style={[styles.icon]} // Điều chỉnh vị trí của icon
-          />
+          <AntDesign name="right" size={24} color="#444" style={styles.icon} />
           <View style={styles.imageContainer}>
             <Image source={Image32} style={styles.image} />
           </View>
@@ -112,7 +66,9 @@ const layerTool = () => {
     </View>
   );
 };
-export default layerTool;
+
+export default LayerTool;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -124,6 +80,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 18,
     marginBottom: 10,
+    color: "#333",
   },
   scrollContainer: {
     paddingBottom: 20,
@@ -139,40 +96,53 @@ const styles = StyleSheet.create({
     height: 100,
     width: 190,
     borderRadius: 8,
-    backgroundColor: "#F7F7F7",
+    backgroundColor: "#ECECEC",
     marginLeft: 6,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 3,
   },
-  lineContainer: {
+  expandedContainer: {
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "flex-start",
+    marginLeft: 32,
   },
   row: {
     flexDirection: "row",
     alignItems: "center",
+    marginBottom: 10,
+    position: "relative",
   },
   verticalLine: {
-    width: 1, // Độ rộng của đường thẳng
-    height: 20, // Chiều cao đường thẳng giữa các hình ảnh
-    backgroundColor: "#000", // Màu đen
-    marginLeft: 65, // Canh đúng vị trí bên trái của khung
+    width: 2,
+    height: 70,
+    backgroundColor: "#000",
+    position: "absolute",
+    left: -10,
+    top: 0,
   },
-  verticalLineLeft: {
-    width: 1,
-    height: "100%", // Chiều cao bằng với khung chứa
-    backgroundColor: "#000", // Màu đen
-    marginRight: 10, // Khoảng cách với khung ảnh
+  horizontalLine: {
+    width: 20,
+    height: 2,
+    backgroundColor: "#000",
+    marginRight: 5,
   },
   imageContainerSmall: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#F7F7F7",
+    backgroundColor: "#ECECEC",
     height: 70,
     width: 168,
-    marginBottom: 10,
     borderRadius: 8,
-    marginLeft: 65,
     padding: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 3,
   },
   image: {
     height: "100%",
@@ -181,5 +151,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     marginLeft: 5,
+    color: "#444",
   },
 });
