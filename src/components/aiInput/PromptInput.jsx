@@ -1,17 +1,20 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View, TextInput, StyleSheet, Image } from 'react-native';
+import sendIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import sparkles from '../../../assets/image/AiInputImage/sparkles.png';
+import send from '../../../assets/image/AiInputImage/send.png'
 
 const PromptInput = () => {
   return (
     <View style={styles.container}>
-      <Icon name="sparkles" size={20} color="gray" style={styles.iconLeft} />
+      {/* Thay Icon bằng Image */}
+      <Image source={sparkles} style={styles.iconLeft} />
       <TextInput
         placeholder="Describe the image you want to generate"
         placeholderTextColor="gray"
         style={styles.input}
       />
-      <Icon name="send" size={20} color="gray" style={styles.iconRight} />
+      <Image source={send} style={styles.iconRight} />
     </View>
   );
 };
@@ -34,12 +37,14 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   iconLeft: {
-    position: 'absolute',
-    left: 10,
+    width: 20,
+    height: 20,
+    marginRight: 10,
   },
   iconRight: {
-    position: 'absolute',
-    right: 10,
+    width: 20,
+    height: 20,
+    marginLeft: 10,
   },
 });
 

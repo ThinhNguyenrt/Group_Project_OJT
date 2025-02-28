@@ -21,7 +21,7 @@ import AiImage from './src/components/aiTool/aiImage';
 export default function App() {
   return (
     <View style={styles.container}>
-      <AiImage  />
+      <PromptInput  />
     </View>
   );
 }

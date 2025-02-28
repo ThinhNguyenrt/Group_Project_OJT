@@ -1,20 +1,28 @@
 import React from "react";
-import { View } from "react-native";
+import { View, Image, StyleSheet, FlatList } from "react-native";
 import Svg, { Path } from "react-native-svg";
+import arrow from  '../../../assets/image/vector/arrow.png'
 
 const Vector = () => {
+
   return (
-    <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-      <Svg width="50" height="50" viewBox="0 0 50 50">
-        <Path
-          d="M10 10 L40 25 L10 40 Z"
-          fill="black"
-          stroke="black"
-          strokeWidth="2"
-        />
-      </Svg>
+    <View style={styles.container}>
+      <Image source={arrow} style={styles.image} />
     </View>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: 50, 
+    height: 50,
+    resizeMode: "contain",
+  },
+});
 
 export default Vector;
