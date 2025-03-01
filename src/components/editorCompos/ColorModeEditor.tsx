@@ -6,29 +6,25 @@ import { useState } from "react"
 const ColorModeEditor = ({
   onChangeMode,
 }: {
-  onChangeMode: (mode: string) => void
+  onChangeMode: (mode: string | undefined) => void
 }) => {
-  const [mode, setMode] = useState("swatches")
-
-  const handleChangeMode = (mode: string) => {
-    setMode(mode)
-    onChangeMode(mode)
-  }
-
   const ColorMixerButtons = [
     {
       title: "Swatches",
       icon: griddots,
-      onPress: () => handleChangeMode("swatches"),
     },
     {
       title: "Color Mixer",
       icon: palette,
-      onPress: () => handleChangeMode("mixer"),
     },
   ]
 
-  return <EditButtons buttons={ColorMixerButtons} />
+  return (
+    <EditButtons
+      buttons={ColorMixerButtons}
+      onValueChange={(value) => onChangeMode(value)}
+    />
+  )
 }
 
 export default ColorModeEditor

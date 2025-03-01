@@ -14,13 +14,18 @@ import {
 interface ButtonProps {
   title?: string
   icon?: ImageSourcePropType
-  onPress?: (event: GestureResponderEvent) => void
 }
 
 /** EditButtons Component - Displays a group of animated selectable buttons with separators.
  * @param {ButtonProps[]} buttons - Array of ButtonProps objects to display as buttons
  */
-const EditButtons = ({ buttons }: { buttons: ButtonProps[] }) => {
+const EditButtons = ({
+  buttons,
+  onValueChange,
+}: {
+  buttons: ButtonProps[]
+  onValueChange: (value: string | undefined) => void
+}) => {
   const [parentWidth, setParentWidth] = useState<number>(0)
   const [selectedIndex, setSelectedIndex] = useState<number>(0)
   const animatedPosition = useRef(new Animated.Value(0)).current
@@ -69,7 +74,7 @@ const EditButtons = ({ buttons }: { buttons: ButtonProps[] }) => {
               ]}
               onPress={() => {
                 setSelectedIndex(index)
-                btn.onPress
+                onValueChange(btn.title)
               }}
             >
               {btn.icon && <Image source={btn.icon} style={styles.icon} />}
