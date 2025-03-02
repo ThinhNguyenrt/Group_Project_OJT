@@ -46,6 +46,7 @@ const InputNumber: React.FC<NumberInputProps> = ({
 
 const styles = StyleSheet.create({
   container: {
+    width: "98%",
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "#d9d7d7",
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
   icon: {
     marginLeft: 10,
     width: "12%",
-    height: "75%",
+    height: "42%",
   },
   label: {
     fontSize: 14,
