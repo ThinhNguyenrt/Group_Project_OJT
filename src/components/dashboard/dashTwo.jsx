@@ -19,26 +19,26 @@ const gridData = [
     { uri: require("../../../assets/dashboardImage/AIImages/tree.jpg"), height: 300 },
     { uri: require("../../../assets/dashboardImage/AIImages/ballon.jpg"), height: 400 },
   ],
-  [
-    { uri: "https://img.freepik.com/free-photo/easter-decorative-eggs-arrangement_23-2150245764.jpg", height: 450, text: { title: "Helen", date: "02.03.2023", description: "Save, share and use your image however you please." }},
+
+    { uri: "https://img.freepik.com/free-photo/easter-decorative-eggs-arrangement_23-2150245764.jpg", height: 450, text: { title: "Helen", date: "02.03.2023", description: "Save, share and use your image however you please." } },
     { uri: "https://img.freepik.com/foto-premium/un-illustrazione-digitale-di-uno-stand-gastronomico-mco_852323-60.jpg", height: 300 },
-    { uri: require("../../../assets/dashboardImage/AIImages/tank.jpg"),height:280}
+    { uri: require("../../../assets/dashboardImage/AIImages/tank.jpg"), height: 280 }
   ],
   [
-    { uri: require("../../../assets/dashboardImage/AIImages/monkey.jpg"), height: 300},
+    { uri: require("../../../assets/dashboardImage/AIImages/monkey.jpg"), height: 300 },
     { uri: "https://img.freepik.com/premium-photo/chinese-asian-cartoon-background-illustrations-kids-cartoon-style-ai-generated_755721-1470.jpg", height: 250 },
     { uri: "https://cdn.prod.website-files.com/61854e3ef69d07a1f22d8d6f/62278e0a0810f907e2d24955_instant-win-wink.jpg", height: 240 },
     { uri: "https://img.freepik.com/free-photo/fantasy-landscape-with-gradient-cube_23-2149312128.jpg", height: 280 },
   ],
 ];
 
-const DashTwo = () => {
+const dashTwo = () => {
   const [selectedFilter, setSelectedFilter] = useState("Recent");
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <ScrollView
             horizontal
@@ -139,31 +139,35 @@ const DashTwo = () => {
 };
 
 const styles = StyleSheet.create({
+
   container: { flex: 1, backgroundColor: "#f8f8f8", padding: 0 },
   header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10, alignItems: "center" ,marginLeft:20},
   categoryContainer: { flexDirection: "row", flex: 1 },
   categoryButton: { paddingHorizontal: 10, paddingVertical: 5 },
   categoryText: { fontSize: 16, color: "#333" }, // Mặc định là màu đen
   boldText: { fontWeight: "bold", color: "#000000" }, // Khi được chọn thì màu xanh
-  filterWrapper: {  
-    alignItems: "flex-end",  
+
+  filterWrapper: {
+    alignItems: "flex-end",
     paddingRight: 10, // Đẩy container Recent/Hot vào sát lề phải khoảng 10px  
-    paddingTop:5
-  },  
+    paddingTop: 5
+  },
+
   filterContainer: { flexDirection: "row", borderRadius: 10, backgroundColor: "#F7F7F7", padding: 5 },
   filterButton: { flexDirection: "row", alignItems: "center", padding: 8, borderRadius: 10 },
   activeFilterButton: { backgroundColor: "white" },
   filterText: { marginLeft: 5, color: "#333" },
-  gridContainer: {  
-    flexDirection: "row",  
-    justifyContent: "space-between",  
-    flexWrap: "wrap",  
+
+  gridContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
     gap: 10,  // Chỉnh khoảng cách ngang 10px  
     paddingHorizontal: 20, // Đảm bảo hình không sát lề  
-  },   
-  column: { 
-    flex: 1,  
-    flexDirection: "column", 
+  },
+  column: {
+    flex: 1,
+    flexDirection: "column",
   },
   overlay: {
     position: "absolute",
@@ -173,6 +177,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 8,
     borderRadius: 5,
+
     
   },
   overlayContainer:{flexDirection:"row"},
