@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
 } from "react-native"
-import plus from "../../../assets/icons/plus.png"
+import plus from "../../../../assets/icons/plus.png"
 import Modal from "react-native-modal"
 import AdjustableFilterImage from "./CustomFilter"
 

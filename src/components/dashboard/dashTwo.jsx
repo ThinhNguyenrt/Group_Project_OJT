@@ -19,7 +19,7 @@ const gridData = [
     { uri: require("../../../assets/dashboardImage/AIImages/tree.jpg"), height: 300 },
     { uri: require("../../../assets/dashboardImage/AIImages/ballon.jpg"), height: 400 },
   ],
-  [
+
     { uri: "https://img.freepik.com/free-photo/easter-decorative-eggs-arrangement_23-2150245764.jpg", height: 450, text: { title: "Helen", date: "02.03.2023", description: "Save, share and use your image however you please." } },
     { uri: "https://img.freepik.com/foto-premium/un-illustrazione-digitale-di-uno-stand-gastronomico-mco_852323-60.jpg", height: 300 },
     { uri: require("../../../assets/dashboardImage/AIImages/tank.jpg"), height: 280 }
@@ -139,21 +139,25 @@ const dashTwo = () => {
 };
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#f8f8f8", padding: 0, borderRadius: 10, },
-  header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10, alignItems: "center", marginLeft: 20 },
+
+  container: { flex: 1, backgroundColor: "#f8f8f8", padding: 0 },
+  header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10, alignItems: "center" ,marginLeft:20},
   categoryContainer: { flexDirection: "row", flex: 1 },
   categoryButton: { paddingHorizontal: 10, paddingVertical: 5 },
   categoryText: { fontSize: 16, color: "#333" }, // Mặc định là màu đen
   boldText: { fontWeight: "bold", color: "#000000" }, // Khi được chọn thì màu xanh
+
   filterWrapper: {
     alignItems: "flex-end",
     paddingRight: 10, // Đẩy container Recent/Hot vào sát lề phải khoảng 10px  
     paddingTop: 5
   },
+
   filterContainer: { flexDirection: "row", borderRadius: 10, backgroundColor: "#F7F7F7", padding: 5 },
   filterButton: { flexDirection: "row", alignItems: "center", padding: 8, borderRadius: 10 },
   activeFilterButton: { backgroundColor: "white" },
   filterText: { marginLeft: 5, color: "#333" },
+
   gridContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -174,8 +178,9 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 5,
 
+    
   },
-  overlayContainer: { flexDirection: "row" },
+  overlayContainer:{flexDirection:"row"},
   overlayImage: {
     width: 25,
     height: 25,
@@ -183,8 +188,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   overlayTitle: { color: "black", fontWeight: "bold", fontSize: 16 },
-  overlayDate: { color: "black", fontSize: 14, marginLeft: 150 },
+  overlayDate: { color: "black", fontSize: 14, marginLeft:150 },
   overlayDescription: { color: "black", fontSize: 14 },
 });
 
-export default dashTwo;
+export default DashTwo;

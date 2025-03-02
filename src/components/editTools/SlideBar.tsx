@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { View, Text, StyleSheet } from "react-native"
 import { Slider } from "@miblanchard/react-native-slider"
 
@@ -35,15 +35,17 @@ const SlideBar: React.FC<SliderProps> = ({
 }) => {
   const [value, setValue] = useState(initialValue)
 
+  useEffect(() => {
+    setValue(initialValue)
+  }, [initialValue])
+
   const handleChange = (val: number | number[]) => {
     const newValue = Array.isArray(val) ? val[0] : val
     setValue(newValue)
-    if (onValueChange) {
-      onValueChange(newValue)
-    }
+    onValueChange(newValue)
   }
 
-  let fixedValue = value.toFixed(fixedPoint)
+  const fixedValue = value.toFixed(fixedPoint)
 
   return (
     <View style={styles.container}>
@@ -58,7 +60,7 @@ const SlideBar: React.FC<SliderProps> = ({
       <Slider
         minimumValue={minimumValue}
         minimumTrackTintColor="#CFEB92"
-        maximumValue={maximumValue || 100}
+        maximumValue={maximumValue}
         maximumTrackTintColor="gray"
         value={value}
         step={step}
@@ -72,46 +74,32 @@ const SlideBar: React.FC<SliderProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "90%",
-    marginLeft: 10,
-    marginRight: 10,
+    width: "100%",
+    marginBottom: 15,
     alignItems: "stretch",
     justifyContent: "center",
   },
   thumb: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
     backgroundColor: "#FFF",
-    borderRadius: 10,
-    borderWidth: 4,
+    borderRadius: 20,
+    borderWidth: 2,
     borderColor: "#CFEB92",
-    position: "absolute",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
+    elevation: 2,
   },
   track: {
-    height: 15,
-    borderRadius: 10,
-    justifyContent: "center",
+    height: 20,
+    borderRadius: 20,
+    backgroundColor: "#E0E0E0",
   },
   slideInfo: {
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  label: {
-    fontSize: 20,
-    fontFamily: "Roboto",
-  },
-  valueBox: {
-    width: 50,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: "gray",
-  },
-  value: {
-    fontFamily: "Roboto",
-  },
 })
-
 export default SlideBar

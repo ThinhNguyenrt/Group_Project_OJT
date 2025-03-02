@@ -74,7 +74,7 @@ const InputDropdown: React.FC<DropdownPickerProps> = ({
 
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
+    width: "98%",
   },
   icon: {
     borderRadius: 50,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   dropdown: {
-    height: 50,
+    height: 40,
     borderRadius: 8,
     paddingHorizontal: 10,
     backgroundColor: "#ebebeb",

@@ -1,10 +1,17 @@
 import { TouchableOpacity, StyleSheet, Image, Text } from "react-native"
 import { TabButtonProps } from "./TabButton2"
 
+/**
+ * TabButton1 component for the button on the side tab with style 1
+ * @param title - name of the button
+ * @param icon - icon of the button
+ * @param onPress - function to be called when the button is pressed
+ * @param isActive - boolean to determine if the button is active
+ */
 const TabButton1: React.FC<TabButtonProps> = ({
   title,
   icon,
-  onPress,
+  onPress = () => {},
   isActive,
 }) => {
   return (
@@ -22,7 +29,7 @@ const TabButton1: React.FC<TabButtonProps> = ({
 
 const styles = StyleSheet.create({
   tabButton: {
-    width: "15%",
+    width: "98%",
     flexDirection: "row",
     padding: 10,
     alignItems: "center",
@@ -42,7 +49,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     width: 20,
     height: 20,
-    marginRight: "7%",
+    marginRight: 10,
   },
 })
 
