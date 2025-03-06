@@ -97,20 +97,35 @@ const SquareWithCircles = () => {
               width: Math.max(30, prev.width - gestureState.dx),
               height: Math.max(30, prev.height - gestureState.dy),
             }));
-            setPosition((prev) => ({ x: prev.x + gestureState.dx, y: prev.y + gestureState.dy }));
+            setPosition((prev) => ({
+              x: prev.x + gestureState.dx,
+              y: prev.y + gestureState.dy,
+            }));
             break;
           case "right":
-            setSize((prev) => ({ width: Math.max(30, prev.width + gestureState.dx), height: prev.height }));
+            setSize((prev) => ({
+              width: Math.max(30, prev.width + gestureState.dx),
+              height: prev.height,
+            }));
             break;
           case "left":
-            setSize((prev) => ({ width: Math.max(30, prev.width - gestureState.dx), height: prev.height }));
+            setSize((prev) => ({
+              width: Math.max(30, prev.width - gestureState.dx),
+              height: prev.height,
+            }));
             setPosition((prev) => ({ x: prev.x + gestureState.dx, y: prev.y }));
             break;
           case "bottom":
-            setSize((prev) => ({ width: prev.width, height: Math.max(30, prev.height + gestureState.dy) }));
+            setSize((prev) => ({
+              width: prev.width,
+              height: Math.max(30, prev.height + gestureState.dy),
+            }));
             break;
           case "top":
-            setSize((prev) => ({ width: prev.width, height: Math.max(30, prev.height - gestureState.dy) }));
+            setSize((prev) => ({
+              width: prev.width,
+              height: Math.max(30, prev.height - gestureState.dy),
+            }));
             setPosition((prev) => ({ x: prev.x, y: prev.y + gestureState.dy }));
             break;
           default:
@@ -136,11 +151,44 @@ const SquareWithCircles = () => {
       <Svg width="100%" height="100%">
         {position && size && (
           <>
-            <Rect x={position.x} y={position.y} width={size.width} height={size.height} fill="lightgray" stroke="black" strokeWidth="2" strokeDasharray="5 5" />
-            <Circle cx={position.x} cy={position.y} r="5" fill="lightgreen" stroke="black" />
-            <Circle cx={position.x + size.width} cy={position.y} r="5" fill="lightgreen" stroke="black" />
-            <Circle cx={position.x} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
-            <Circle cx={position.x + size.width} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
+            <Rect
+              x={position.x}
+              y={position.y}
+              width={size.width}
+              height={size.height}
+              fill="lightgray"
+              stroke="black"
+              strokeWidth="2"
+              strokeDasharray="5 5"
+            />
+            <Circle
+              cx={position.x}
+              cy={position.y}
+              r="5"
+              fill="lightgreen"
+              stroke="black"
+            />
+            <Circle
+              cx={position.x + size.width}
+              cy={position.y}
+              r="5"
+              fill="lightgreen"
+              stroke="black"
+            />
+            <Circle
+              cx={position.x}
+              cy={position.y + size.height}
+              r="5"
+              fill="lightgreen"
+              stroke="black"
+            />
+            <Circle
+              cx={position.x + size.width}
+              cy={position.y + size.height}
+              r="5"
+              fill="lightgreen"
+              stroke="black"
+            />
           </>
         )}
       </Svg>
