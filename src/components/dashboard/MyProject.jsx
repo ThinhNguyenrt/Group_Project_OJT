@@ -33,7 +33,7 @@ const MyProject = () => {
                         </Picker>
                     </View>
                     <View>
-                        <TouchableOpacity style={[Styles.borderIconAntDesign, { marginLeft: 960 }]}>
+                        <TouchableOpacity style={[Styles.borderIconAntDesign, { marginLeft: 910 }]}>
                             <AntDesign name="bars" size={27} />
                         </TouchableOpacity>
                     </View>
