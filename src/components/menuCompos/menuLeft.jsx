@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Feather from '@expo/vector-icons/Feather';
@@ -13,12 +13,16 @@ import AiEdit from "../generate/aiEdit";
 
 
 
+const screenWidth = Dimensions.get("window").width;
+const screenHeight = Dimensions.get("window").height;
+
 const menuLeft = () => {
+
 
   const [activeScreen, setActiveScreen] = useState("Home");
   return (
     <View style={styles.container}>
-      <View style={{ marginLeft: 10, }}>
+      <View style={styles.menuContainer}>
         {/* Group 1 */}
 
         <TouchableOpacity style={[styles.menuItem, activeScreen === "Home" && styles.backgroundButton]} onPress={() => setActiveScreen("Home")}>
@@ -84,32 +88,13 @@ const menuLeft = () => {
         </View>
       </View>
 
-      <View>
-        {activeScreen === "Home" && (
-          <View style={{ width: '92.8%', marginLeft: 20, height: 625, }}>
-            <Home />
-          </View>
-        )}
-        {activeScreen === "Discovery" && (
-          <View style={{ width: 1215, marginLeft: 20, height: 625 }}>
-            <Discovery />
-          </View>
-        )}
-        {activeScreen === "MyProject" && (
-          <View style={{ width: 1215, height: '120%', marginLeft: 20, }}>
-            <MyProject />
-          </View>
-        )}
-        {activeScreen === "TrashList" && (
-          <View style={{ width: 1215, height: 625, marginLeft: 20, }}>
-            <TrashList />
-          </View>
-        )}
-        {activeScreen === "AiEdit" && (
-          <View style={{ width: 1215, height: 625, marginLeft: 20, }}>
-             <AiEdit/>
-          </View>
-        )}
+      {/* Content View */}
+      <View style={styles.contentContainer}>
+        {activeScreen === "Home" && <Home />}
+        {activeScreen === "Discovery" && <Discovery />}
+        {activeScreen === "MyProject" && <MyProject />}
+        {activeScreen === "TrashList" && <TrashList />}
+        {activeScreen === "AiEdit" && <AiEdit />}
       </View>
 
     </View>
@@ -215,5 +200,13 @@ const styles = StyleSheet.create({
     height: 40,
     paddingLeft: 15,
     borderRadius: 15,
-  }
+  },
+  menuContainer: {
+    width: screenWidth * 0.2, // Chiếm 20% màn hình
+  },
+  contentContainer: {
+    width: screenWidth * 0.773, // Chiếm 75% màn hình
+    height: screenHeight * 0.89, // Giữ tỷ lệ chiều cao
+    marginLeft: 20,
+  },
 });
