@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyleSheet, View, Image, TouchableOpacity, Text, Platform } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
+import GenerateButton from "./GenerateButton";
 const aiEdit = () => {
     const [image, setImage] = useState(null);
 
