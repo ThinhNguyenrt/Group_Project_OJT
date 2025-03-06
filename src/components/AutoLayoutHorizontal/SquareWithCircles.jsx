@@ -1,15 +1,18 @@
 import React, { useState } from "react";
-import { View, PanResponder } from "react-native";
+import { View, PanResponder, TouchableOpacity } from "react-native";
 import Svg, { Rect, Circle } from "react-native-svg";
+import CloseIcon from "react-native-vector-icons/AntDesign";
 
 const SquareWithCircles = () => {
-  const [position, setPosition] = useState({ x: 50, y: 50 });
-  const [size, setSize] = useState({ width: 100, height: 100 });
+  const [position, setPosition] = useState(null);
+  const [size, setSize] = useState(null);
+  const [isDrawing, setIsDrawing] = useState(false);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeCorner, setResizeCorner] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
 
   const checkResizeCorner = (x, y) => {
+    if (!position || !size) return null;
     const rightEdge = position.x + size.width;
     const bottomEdge = position.y + size.height;
     const leftEdge = position.x;
@@ -40,8 +43,14 @@ const SquareWithCircles = () => {
     onStartShouldSetPanResponder: () => true,
     onPanResponderGrant: (evt) => {
       const { locationX, locationY } = evt.nativeEvent;
-      const resizeCorner = checkResizeCorner(locationX, locationY);
+      if (!position || !size) {
+        setPosition({ x: locationX, y: locationY });
+        setSize({ width: 0, height: 0 });
+        setIsDrawing(true);
+        return;
+      }
 
+      const resizeCorner = checkResizeCorner(locationX, locationY);
       const insideRect =
         locationX > position.x &&
         locationX < position.x + size.width &&
@@ -53,16 +62,15 @@ const SquareWithCircles = () => {
         setIsResizing(true);
       } else if (insideRect) {
         setIsDragging(true);
-      } else {
-        // Nếu click ngoài hình, di chuyển hình đến giữ con chuột
-        setPosition({
-          x: locationX - size.width / 2,
-          y: locationY - size.height / 2,
-        });
       }
     },
     onPanResponderMove: (evt, gestureState) => {
-      if (isResizing) {
+      if (isDrawing) {
+        setSize({
+          width: Math.max(30, gestureState.moveX - position.x),
+          height: Math.max(30, gestureState.moveY - position.y),
+        });
+      } else if (isResizing) {
         switch (resizeCorner) {
           case "bottom-right":
             setSize((prev) => ({
@@ -116,6 +124,7 @@ const SquareWithCircles = () => {
       }
     },
     onPanResponderRelease: () => {
+      setIsDrawing(false);
       setIsResizing(false);
       setResizeCorner(null);
       setIsDragging(false);
@@ -125,23 +134,37 @@ const SquareWithCircles = () => {
   return (
     <View {...panResponder.panHandlers} style={{ flex: 1 }}>
       <Svg width="100%" height="100%">
-        {/* Hình chữ nhật */}
-        <Rect
-          x={position.x}
-          y={position.y}
-          width={size.width}
-          height={size.height}
-          fill="lightgray"
-          stroke="black"
-          strokeWidth="2"
-          strokeDasharray="5 5"
-        />
-        {/* Các điểm chỉnh kích thước chỉ xuất hiện ở các góc */}
-        <Circle cx={position.x} cy={position.y} r="5" fill="lightgreen" stroke="black" />
-        <Circle cx={position.x + size.width} cy={position.y} r="5" fill="lightgreen" stroke="black" />
-        <Circle cx={position.x} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
-        <Circle cx={position.x + size.width} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
+        {position && size && (
+          <>
+            <Rect x={position.x} y={position.y} width={size.width} height={size.height} fill="lightgray" stroke="black" strokeWidth="2" strokeDasharray="5 5" />
+            <Circle cx={position.x} cy={position.y} r="5" fill="lightgreen" stroke="black" />
+            <Circle cx={position.x + size.width} cy={position.y} r="5" fill="lightgreen" stroke="black" />
+            <Circle cx={position.x} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
+            <Circle cx={position.x + size.width} cy={position.y + size.height} r="5" fill="lightgreen" stroke="black" />
+          </>
+        )}
       </Svg>
+      {position && size && (
+        <TouchableOpacity
+          style={{
+            position: "absolute",
+            left: position.x + size.width - 10,
+            top: position.y - 10,
+            backgroundColor: "black",
+            borderRadius: 10,
+            width: 20,
+            height: 20,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onPress={() => {
+            setPosition(null);
+            setSize(null);
+          }}
+        >
+          <CloseIcon name="close" size={15} color="white" />
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
