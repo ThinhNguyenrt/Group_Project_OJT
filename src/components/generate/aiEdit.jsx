@@ -1,108 +1,134 @@
 import { useState } from "react";
-import { StyleSheet, View, Button, Image, TouchableOpacity, Text } from "react-native"
-import { Platform } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity, Text, Platform } from "react-native";
+import * as ImagePicker from 'expo-image-picker';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
-import background from '../../../assets/dashboardImage/Grid Visualization.png';
 import GenerateButton from "./GenerateButton";
-
 const aiEdit = () => {
-
     const [image, setImage] = useState(null);
-    const uploatImage = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            setImage(URL.createObjectURL(file));
+
+    const uploadImage = async (event) => {
+        if (Platform.OS === "web") {
+            const file = event.target.files[0];
+            if (file) {
+                setImage(URL.createObjectURL(file));
+            }
         }
     };
 
+    const pickImage = async () => {
+        const result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1,
+        });
+
+        if (!result.canceled) {
+            setImage(result.assets[0].uri);
+        }
+    };
+
+    const ImageUploadComponent = () => {
+        if (image) {
+            return <Image source={{ uri: image }} style={styles.image} />;
+        }
+
+        return (
+            <TouchableOpacity 
+                onPress={Platform.OS === "web" ? 
+                    () => document.getElementById("fileInput").click() : 
+                    pickImage
+                } 
+                style={styles.chooseImage}
+            >
+                <View style={styles.uploadContent}>
+                    {Platform.OS === "web" && (
+                        <input 
+                            id="fileInput" 
+                            type="file" 
+                            accept="image/*" 
+                            onChange={uploadImage} 
+                            style={{ display: "none" }} 
+                        />
+                    )}
+                    <Ionicons name="image-outline" size={50} color='#A8A8A8'/>
+                    <Text style={styles.textUploadImage}>
+                        {Platform.OS === "web" ? "Upload a reference image" : "Choose an image"}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+    };
 
     return (
-        <View style={style.Container}>
-            
-            {Platform.OS === "web" ? (
-                <View>
-                    {image ? (
-                        <Image source={{ uri: image }} style={style.image} />
-                    ) : (
-                        <TouchableOpacity onPress={() => document.getElementById("fileInput").click()} style={style.chooceImage}>
-                            <View style={{  alignItems: "center",}}>
-                                <input id="fileInput" type="file" accept="image/*" onChange={uploatImage} style={{ display: "none" }} />
-                                <Ionicons name="image-outline" size={50} color='#A8A8A8'/>
-                                <Text style={style.textUploadImage}>Upload a reference image</Text>
-                            </View>
-                        </TouchableOpacity>
-                    )}
-
+        <View style={styles.container}>
+            <ImageUploadComponent />
+            <TouchableOpacity style={styles.generateButton}>
+                <View style={styles.generateContent}>
+                    <Ionicons name='sparkles-sharp' size={30} color="#FFFFFF" />
+                    <Text style={styles.textGenerate}>Generate</Text>
                 </View>
-            ) : (
-                <TouchableOpacity onPress={() => {}}>
-                    <Text >Choose Image</Text>
-                </TouchableOpacity>
-            )}
-
-            <View style={style.backgroundGenerate}>
-                <TouchableOpacity style={style.generate}>
-                    <Ionicons name='sparkles-sharp' size={30} />
-                    <Text style={style.textGenerate}>Generate</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={{flexDirection: "row", justifyContent: "space-around", marginTop: 20}}>
-                <GenerateButton  name="abs" />
-                <GenerateButton name="dumamay" />
-            </View>  
+            </TouchableOpacity>
         </View>
     );
 }
 
 export default aiEdit
 
-const style = StyleSheet.create({
-    Container: {
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
         backgroundColor: "#F8F8F8",
         borderRadius: 10,
+        padding: 20,
+        alignItems: "center"
     },
     image: {
-        width: 1010,
-        height: 510,
-        marginLeft: 120,
-        marginTop: 70,
-        borderWidth: 3,
+        width: Platform.OS === "web" ? 800 : "90%",
+        height: Platform.OS === "web" ? 400 : 300,
+        borderWidth: 2,
         borderColor: '#A8A8A8',
-        borderRadius: 5,
+        borderRadius: 10,
+        marginBottom: 20
     },
-    chooceImage: {
+    chooseImage: {
+        borderWidth: 2,
+        borderStyle: "dashed",
         borderColor: '#A8A8A8',
-        borderBottomWidth: 2,
-        width: 300,
-        height: 150,
-        marginLeft: 500,
-        marginTop: 250,
-        paddingTop: 35,
-       
+        borderRadius: 10,
+        width: Platform.OS === "web" ? 800 : "90%",
+        height: Platform.OS === "web" ? 400 : 300,
+        justifyContent: "center",
+        alignItems: "center",
+        marginBottom: 20
+    },
+    uploadContent: {
+        alignItems: "center",
+        justifyContent: "center"
     },
     textUploadImage: {
         color: '#A8A8A8',
-        fontFamily: 'Arial',
-        fontSize: 17,
-        marginTop: 5,
+        fontSize: 16,
+        marginTop: 10,
+        textAlign: "center"
     },
-    generate:{
-        marginTop: 14,
+    generateButton: {
+        backgroundColor: '#3EB8AF',
+        borderRadius: 10,
+        padding: 15,
+        width: Platform.OS === "web" ? 200 : "50%",
+        alignItems: "center"
+    },
+    generateContent: {
+        flexDirection: "row",
         alignItems: "center",
+        justifyContent: "center"
     },
     textGenerate: {
-        fontFamily: 'Arial',
+        color: "#FFFFFF",
         fontWeight: "bold",
-        fontSize: 13,
-    },
-    backgroundGenerate: {
-        backgroundColor: '#3EB8AF',
-        width: 70,
-        height: 70,
-        borderRadius: 10,
-        position: "absolute",
+        fontSize: 16,
+        marginLeft: 10
     }
 })
 
