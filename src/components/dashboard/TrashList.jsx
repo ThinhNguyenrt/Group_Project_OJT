@@ -64,7 +64,7 @@ const TrashList = () => {
                     </Picker>
                 </View>
                 <View>
-                    <TouchableOpacity style={[Style.borderIconAntDesign, { marginLeft: 960 }]} onPress={() => setStypeScreen("Row")}>
+                    <TouchableOpacity style={[Style.borderIconAntDesign, { marginLeft: 910 }]} onPress={() => setStypeScreen("Row")}>
                         <AntDesign name="bars" size={27} />
                     </TouchableOpacity>
                 </View>
