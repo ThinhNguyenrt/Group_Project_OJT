@@ -19,7 +19,7 @@ const gridData = [
     { uri: require("../../../assets/dashboardImage/AIImages/tree.jpg"), height: 300 },
     { uri: require("../../../assets/dashboardImage/AIImages/ballon.jpg"), height: 400 },
   ],
-
+  [
     { uri: "https://img.freepik.com/free-photo/easter-decorative-eggs-arrangement_23-2150245764.jpg", height: 450, text: { title: "Helen", date: "02.03.2023", description: "Save, share and use your image however you please." } },
     { uri: "https://img.freepik.com/foto-premium/un-illustrazione-digitale-di-uno-stand-gastronomico-mco_852323-60.jpg", height: 300 },
     { uri: require("../../../assets/dashboardImage/AIImages/tank.jpg"), height: 280 }
@@ -192,4 +192,4 @@ const styles = StyleSheet.create({
   overlayDescription: { color: "black", fontSize: 14 },
 });
 
-export default DashTwo;
+export default dashTwo;
