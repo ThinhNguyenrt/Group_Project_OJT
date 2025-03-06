@@ -10,12 +10,13 @@ const Stack = createStackNavigator();
 export default function App() {
   
   return (
-      <NavigationContainer>
+      <NavigationContainer >
           <Stack.Navigator initialRouteName="Home">
             <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }}/>
             <Stack.Screen name="Detail" component={DashThree} />
           </Stack.Navigator>
       </NavigationContainer>
+      
 
   );
 }

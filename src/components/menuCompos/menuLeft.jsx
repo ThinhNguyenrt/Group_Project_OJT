@@ -91,22 +91,22 @@ const menuLeft = () => {
           </View>
         )}
         {activeScreen === "Discovery" && (
-          <View style={{ width: 1215, marginLeft: 20, height: 625 }}>
+          <View style={{ width: "100%", marginLeft: 20, height: "100%" }}>
             <Discovery />
           </View>
         )}
         {activeScreen === "MyProject" && (
-          <View style={{ width: 1215, height: '120%', marginLeft: 20, }}>
+          <View style={{ width: "100%", height: '100%', marginLeft: 20, }}>
             <MyProject />
           </View>
         )}
         {activeScreen === "TrashList" && (
-          <View style={{ width: 1215, height: 625, marginLeft: 20, }}>
+          <View style={{ width: "100%", height: "100%", marginLeft: 20, }}>
             <TrashList />
           </View>
         )}
         {activeScreen === "AiEdit" && (
-          <View style={{ width: 1215, height: 625, marginLeft: 20, }}>
+          <View style={{ width: "100%", height: "100%", marginLeft: 20, }}>
              <AiEdit/>
           </View>
         )}
@@ -120,6 +120,7 @@ const menuLeft = () => {
 export default menuLeft;
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 10,
     flexDirection: "row",
   },
