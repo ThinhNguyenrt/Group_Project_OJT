@@ -4,6 +4,7 @@ import { Platform } from "react-native";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import background from '../../../assets/dashboardImage/Grid Visualization.png';
+import GenerateButton from "./GenerateButton";
 
 const aiEdit = () => {
 
@@ -46,6 +47,10 @@ const aiEdit = () => {
                     <Text style={style.textGenerate}>Generate</Text>
                 </TouchableOpacity>
             </View>
+            <View style={{flexDirection: "row", justifyContent: "space-around", marginTop: 20}}>
+                <GenerateButton  name="abs" />
+                <GenerateButton name="dumamay" />
+            </View>  
         </View>
     );
 }
