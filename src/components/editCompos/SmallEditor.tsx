@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, TouchableOpacity, StyleSheet, Image } from "react-native";
-import Click from "../../../assets/image/icons/click.png";
-import Layers from "../../../assets/image/icons/layers.png";
-import Undo from "../../../assets/image/icons/undo.png";
-import Redo from "../../../assets/image/icons/redo.png";
+import React, { useState } from "react"
+import { View, TouchableOpacity, StyleSheet, Image } from "react-native"
+import Click from "../../../assets/image/icons/click.png"
+import Layers from "../../../assets/image/icons/layers.png"
+import Undo from "../../../assets/image/icons/undo.png"
+import Redo from "../../../assets/image/icons/redo.png"
 
 const SmallEditor = () => {
-  const [selectedTool, setSelectedTool] = useState(null); // Lưu trạng thái công cụ được chọn
+  const [selectedTool, setSelectedTool] = useState(0) // Lưu trạng thái công cụ được chọn
 
   // Các công cụ trong menu
   const tools = [
@@ -14,7 +14,7 @@ const SmallEditor = () => {
     { id: 2, icon: Layers },
     { id: 3, icon: Undo },
     { id: 4, icon: Redo },
-  ];
+  ]
 
   return (
     <View style={styles.container}>
@@ -38,12 +38,12 @@ const SmallEditor = () => {
         </TouchableOpacity>
       ))}
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   container: {
-    width: '70%',
+    width: "70%",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -71,6 +71,6 @@ const styles = StyleSheet.create({
   selectedIcon: {
     tintColor: "#000", // Màu icon khi được chọn
   },
-});
+})
 
-export default SmallEditor;
+export default SmallEditor
