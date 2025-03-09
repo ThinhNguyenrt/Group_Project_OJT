@@ -5,7 +5,7 @@ import Layers from "../../../assets/image/icons/layers.png"
 import Undo from "../../../assets/image/icons/undo.png"
 import Redo from "../../../assets/image/icons/redo.png"
 
-const SmallEditor = () => {
+const SmallToolMenu = () => {
   const [selectedTool, setSelectedTool] = useState(0) // Lưu trạng thái công cụ được chọn
 
   // Các công cụ trong menu
@@ -73,4 +73,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default SmallEditor
+export default SmallToolMenu

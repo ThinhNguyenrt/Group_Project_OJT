@@ -101,5 +101,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
+  label: {
+    color: "#333",
+  },
+  valueBox: {
+    borderRadius: 20,
+    borderWidth: 1,
+    padding: 5,
+    width: "25%",
+    height: "80%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  value: {
+    color: "#333",
+  },
 })
 export default SlideBar

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import {
   View,
   Text,
@@ -9,7 +9,7 @@ import {
 } from "react-native"
 
 interface FrameButtonProps {
-  key: number
+  index: number
   imageUrl: ImageSourcePropType
   label: string
   isSelected: boolean
@@ -17,14 +17,14 @@ interface FrameButtonProps {
 }
 
 const FrameButton: React.FC<FrameButtonProps> = ({
-  key,
+  index,
   imageUrl,
   label,
   isSelected,
   onPress,
 }) => {
   const handlePress = () => {
-    onPress(key)
+    onPress(index)
   }
 
   return (
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginVertical: 8,
-    backgroundColor: "#transparent",
+    backgroundColor: "transparent",
   },
   menuItem: {
     flexDirection: "row",
