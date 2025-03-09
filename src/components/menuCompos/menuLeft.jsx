@@ -105,6 +105,7 @@ const menuLeft = () => {
 export default menuLeft;
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 10,
     flexDirection: "row",
   },

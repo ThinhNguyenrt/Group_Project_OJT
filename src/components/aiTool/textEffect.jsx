@@ -1,6 +1,6 @@
-import { StyleSheet, View, Text, Image, TextInput, ScrollView } from "react-native";
+import { StyleSheet, View, Text, Image, TextInput, FlatList, TouchableOpacity } from "react-native";
 import React from "react";
-import { MaterialIcons } from '@expo/vector-icons'; // Sử dụng icon từ Expo Vector Icons
+import { MaterialIcons } from '@expo/vector-icons'; 
 
 import Image11 from "../../../assets/aiToolImage/image11.png";
 import Image12 from "../../../assets/aiToolImage/image12.png";
@@ -11,13 +11,19 @@ import Image16 from "../../../assets/aiToolImage/image16.png";
 import Image17 from "../../../assets/aiToolImage/image17.png";
 import Image18 from "../../../assets/aiToolImage/image18.png";
 
+const images = [Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18];
+
 const TextEffect = () => {
+    const renderItem = ({ item }) => (
+        <TouchableOpacity activeOpacity={0.7}>
+            <Image source={item} style={styles.image} />
+        </TouchableOpacity>
+    );
+
     return (
         <View style={styles.container}>
-            {/* Header */}
             <Text style={styles.headerText}>Text Effect</Text>
 
-            {/* Search Input */}
             <View style={styles.searchContainer}>
                 <MaterialIcons name="search" size={24} color="black" style={styles.searchIcon} />
                 <TextInput
@@ -27,17 +33,12 @@ const TextEffect = () => {
                 />
             </View>
 
-            {/* Image List */}
-            <ScrollView contentContainerStyle={styles.imageList}>
-                <Image source={Image11} style={styles.image} />
-                <Image source={Image12} style={styles.image} />
-                <Image source={Image13} style={styles.image} />
-                <Image source={Image14} style={styles.image} />
-                <Image source={Image15} style={styles.image} />
-                <Image source={Image16} style={styles.image} />
-                <Image source={Image17} style={styles.image} />
-                <Image source={Image18} style={styles.image} />
-            </ScrollView>
+            <FlatList
+                data={images}
+                renderItem={renderItem}
+                keyExtractor={(_, index) => index.toString()}
+                contentContainerStyle={styles.imageList}
+            />
         </View>
     );
 };
