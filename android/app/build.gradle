@@ -85,7 +85,6 @@ android {
 
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
-
     namespace 'com.anonymous.imageconvertapp'
     defaultConfig {
         applicationId 'com.anonymous.imageconvertapp'
