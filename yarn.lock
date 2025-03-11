@@ -5275,6 +5275,26 @@ react-native-gesture-handler@^2.24.0:
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
 
+<<<<<<< HEAD
+react-native-hoverable@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.npmjs.org/react-native-hoverable/-/react-native-hoverable-0.2.0.tgz"
+  integrity sha512-iv+soV1UY3ZsEEJhLGzWrsE+yy/QgmDyZuddQWUtI0n9A6Sq6i287p/LtL9TIHDdZWUHtnzMC1aihPbI2a3aJA==
+
+react-native-image-filter-kit@*:
+  version "0.8.0"
+  resolved "https://registry.npmjs.org/react-native-image-filter-kit/-/react-native-image-filter-kit-0.8.0.tgz"
+  integrity sha512-YAJua9CJCCBwrpXWb4py3Tdgd/6gLuZDJHYsXhSKpualiMCHBgBw9jXA33dSUeQSpixl/5I8HyYdwZEe/Q797Q==
+  dependencies:
+    concat-color-matrices "^1.0.0"
+    lodash.pick "^4.4.0"
+    react-is "^17.0.2"
+    rgba-to-rgb "^1.0.2"
+    rn-color-matrices "^4.1.0"
+    ts-tiny-invariant "0.0.3"
+
+=======
+>>>>>>> 0e725bddc54492e825bed269c1398640481903cb
 react-native-is-edge-to-edge@1.1.6:
   version "1.1.6"
   resolved "https://registry.npmjs.org/react-native-is-edge-to-edge/-/react-native-is-edge-to-edge-1.1.6.tgz"
