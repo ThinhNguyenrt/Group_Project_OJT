@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react"
 import {
-  GestureResponderEvent,
   Image,
   TouchableOpacity,
   View,
