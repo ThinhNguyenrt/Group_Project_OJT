@@ -9,7 +9,7 @@ import vectorSplineIcon from "../../../assets/icons/vector-spline.png"
 import typographyIcon from "../../../assets/icons/typography.png"
 import combineIcon from "../../../assets/icons/brand-supernova.png"
 
-const TabLeft = () => {
+const LeftBar = () => {
   const [activeIndex, setActiveIndex] = useState(0)
   const translateX = new Animated.Value(0)
 
@@ -95,4 +95,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default TabLeft
+export default LeftBar

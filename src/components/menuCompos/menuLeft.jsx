@@ -1,57 +1,88 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Dimensions } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Feather from '@expo/vector-icons/Feather';
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import React, { useState } from "react"
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+} from "react-native"
+import AntDesign from "@expo/vector-icons/AntDesign"
+import FontAwesome from "@expo/vector-icons/FontAwesome"
+import Feather from "@expo/vector-icons/Feather"
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
 
-import Home from "../dashboard/dashboardMain";
-import Discovery from "../dashboard/dashTwo";
-import MyProject from "../dashboard/MyProject";
-import TrashList from "../dashboard/TrashList";
-import AiEdit from "../generate/aiEdit";
+import Home from "../dashboard/DashboardMain"
+import Discovery from "../dashboard/dashTwo"
+import MyProject from "../dashboard/MyProject"
+import TrashList from "../dashboard/TrashList"
+import AiEdit from "../generate/AiEdit"
 
-
-
-const screenWidth = Dimensions.get("window").width;
-const screenHeight = Dimensions.get("window").height;
+const screenWidth = Dimensions.get("window").width
+const screenHeight = Dimensions.get("window").height
 
 const menuLeft = () => {
-
-
-  const [activeScreen, setActiveScreen] = useState("Home");
+  const [activeScreen, setActiveScreen] = useState("Home")
   return (
     <View style={styles.container}>
       <View style={styles.menuContainer}>
         {/* Group 1 */}
 
-        <TouchableOpacity style={[styles.menuItem, activeScreen === "Home" && styles.backgroundButton]} onPress={() => setActiveScreen("Home")}>
+        <TouchableOpacity
+          style={[
+            styles.menuItem,
+            activeScreen === "Home" && styles.backgroundButton,
+          ]}
+          onPress={() => setActiveScreen("Home")}
+        >
           <AntDesign name="home" size={22} color="black" />
           <Text style={styles.text}>Home</Text>
         </TouchableOpacity>
 
-        < TouchableOpacity style={[styles.menuItem, activeScreen === "AiEdit" && styles.backgroundButton]} onPress={() => setActiveScreen("AiEdit")}>
+        <TouchableOpacity
+          style={[
+            styles.menuItem,
+            activeScreen === "AiEdit" && styles.backgroundButton,
+          ]}
+          onPress={() => setActiveScreen("AiEdit")}
+        >
           <Text style={styles.text}>New</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.menuItem, activeScreen === "Discovery" && styles.backgroundButton]} onPress={() => setActiveScreen("Discovery")}>
+        <TouchableOpacity
+          style={[
+            styles.menuItem,
+            activeScreen === "Discovery" && styles.backgroundButton,
+          ]}
+          onPress={() => setActiveScreen("Discovery")}
+        >
           <FontAwesome name="safari" size={19} color="black" />
           <Text style={styles.text}>Discovery</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={[styles.menuItem, activeScreen === "MyProject" && styles.backgroundButton]} onPress={() => setActiveScreen("MyProject")}>
+        <TouchableOpacity
+          style={[
+            styles.menuItem,
+            activeScreen === "MyProject" && styles.backgroundButton,
+          ]}
+          onPress={() => setActiveScreen("MyProject")}
+        >
           <Feather name="folder" size={20} color="black" />
           <Text style={styles.text}>My Project</Text>
         </TouchableOpacity>
-
-
 
         {/* Divider */}
         <View style={styles.divider} />
 
         {/* Group 2 */}
 
-        <TouchableOpacity style={[styles.menuItem, activeScreen === "TrashList" && styles.backgroundButton]} onPress={() => setActiveScreen("TrashList")}>
+        <TouchableOpacity
+          style={[
+            styles.menuItem,
+            activeScreen === "TrashList" && styles.backgroundButton,
+          ]}
+          onPress={() => setActiveScreen("TrashList")}
+        >
           <Feather name="trash-2" size={20} color="black" />
           <Text style={styles.text}>Trash</Text>
         </TouchableOpacity>
@@ -65,7 +96,6 @@ const menuLeft = () => {
           <FontAwesome6 name="question-circle" size={20} color="black" />
           <Text style={styles.text}>Get Help</Text>
         </TouchableOpacity>
-
 
         {/* Section Below */}
         <View style={styles.bottomSection}>
@@ -96,13 +126,11 @@ const menuLeft = () => {
         {activeScreen === "TrashList" && <TrashList />}
         {activeScreen === "AiEdit" && <AiEdit />}
       </View>
-
     </View>
-  );
+  )
 }
 
-
-export default menuLeft;
+export default menuLeft
 const styles = StyleSheet.create({
   container: {
     padding: 10,
@@ -113,7 +141,6 @@ const styles = StyleSheet.create({
     alignItems: "center", // Center vertically
     marginVertical: 10, // Add spacing between items
     marginLeft: 20,
-
   },
   text: {
     marginLeft: 10, // Space between icon and text
@@ -195,7 +222,7 @@ const styles = StyleSheet.create({
     color: "black",
   },
   backgroundButton: {
-    backgroundColor: '#F8F8F8',
+    backgroundColor: "#F8F8F8",
     width: 240,
     height: 40,
     paddingLeft: 15,
@@ -209,4 +236,4 @@ const styles = StyleSheet.create({
     height: screenHeight * 0.89, // Giữ tỷ lệ chiều cao
     marginLeft: 20,
   },
-});
+})

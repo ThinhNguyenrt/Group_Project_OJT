@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   StyleSheet,
   View,
@@ -6,16 +6,16 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-} from "react-native";
-import { AntDesign, Feather } from "@expo/vector-icons";
-import Logo from "../../../assets/image/icons/image1.png";
-import Image7 from "../../../assets/image/icons/image7.png";
-import Image8 from "../../../assets/image/icons/image8.png";
-import Image9 from "../../../assets/image/icons/image9.png";
-import Image10 from "../../../assets/image/icons/image10.png";
-import Slider from "@react-native-community/slider";
+} from "react-native"
+import { AntDesign, Feather } from "@expo/vector-icons"
+import Logo from "../../../assets/image/icons/image1.png"
+import Image7 from "../../../assets/image/icons/image7.png"
+import Image8 from "../../../assets/image/icons/image8.png"
+import Image9 from "../../../assets/image/icons/image9.png"
+import Image10 from "../../../assets/image/icons/image10.png"
+import Slider from "@react-native-community/slider"
 const OtherThing = () => {
-  const [aspectRatio, setAspectRatio] = React.useState(50);
+  const [aspectRatio, setAspectRatio] = React.useState(50)
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Phần hình ảnh trên cùng */}
@@ -83,31 +83,13 @@ const OtherThing = () => {
       <View style={styles.card}></View>
       <Text style={styles.emptyText}>Poster</Text>
       <Text style={styles.editText}>Edited 3 days ago</Text>
-      {/* Aspect Ratio Section */}
-      <View style={styles.aspectRatioSection}>
-        <Text style={styles.aspectRatioLabel}>Aspect ratio</Text>
-        <AntDesign name="down" size={24} color="black" style={styles.aspectRatioIcon} />
-      </View>
-
-      {/* Slider */}
-      <Slider
-        style={styles.slider}
-        minimumValue={0}
-        maximumValue={100}
-        value={aspectRatio}
-        onValueChange={(value) => setAspectRatio(value)}
-        minimumTrackTintColor="#CFEB92"
-        maximumTrackTintColor="#FFFFFF"
-        thumbTintColor="#FFFFFF" // Màu của nút trượt
-      />
-      
       {/* Logo ở cuối */}
       <Image source={Logo} style={styles.bottomImage} />
     </ScrollView>
-  );
-};
+  )
+}
 
-export default OtherThing;
+export default OtherThing
 
 const styles = StyleSheet.create({
   container: {
@@ -160,13 +142,12 @@ const styles = StyleSheet.create({
     height: 130,
     width: 230,
   },
-  rowFirst:{
-    flexDirection:"row",
-    justifyContent:"space-between"
+  rowFirst: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  folder:{
-    marginTop:8,
-    
+  folder: {
+    marginTop: 8,
   },
   cardText: {
     flex: 1,
@@ -192,8 +173,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3, // Đổ bóng cho Android
-    marginBottom:13,
-  } ,
+    marginBottom: 13,
+  },
   newDesignSection: {
     flexDirection: "row",
     alignItems: "center", // Căn giữa theo chiều dọc
@@ -212,8 +193,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     flex: 1, // Đẩy text nằm giữa
   },
-  cardTwo:{
-    marginTop:15,
+  cardTwo: {
+    marginTop: 15,
     flexDirection: "row",
     backgroundColor: "white",
     padding: 8, // Giảm padding
@@ -223,17 +204,17 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     marginBottom: 20, // Giảm khoảng cách
     elevation: 3,
-    height:50,
-    width:210
+    height: 50,
+    width: 210,
   },
-  textT:{
-    marginLeft:8,
-    marginRight:70,
-    flexDirection:"column"
+  textT: {
+    marginLeft: 8,
+    marginRight: 70,
+    flexDirection: "column",
   },
-  kilo:{
-    fontSize:12,
-    color:"gray",
+  kilo: {
+    fontSize: 12,
+    color: "gray",
   },
 
   iconImage: {
@@ -251,9 +232,9 @@ const styles = StyleSheet.create({
     fontSize: 12, // Giảm kích thước chữ
     color: "gray",
   },
-  closeButton:{
-    justifyContent:"center",
-    marginRight:5
+  closeButton: {
+    justifyContent: "center",
+    marginRight: 5,
   },
   aspectRatioSection: {
     flexDirection: "row",
@@ -279,5 +260,4 @@ const styles = StyleSheet.create({
     height: 40,
     width: 40,
   },
-});
-  
+})
