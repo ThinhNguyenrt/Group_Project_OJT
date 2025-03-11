@@ -18,7 +18,7 @@ export default function App() {
             <Stack.Screen name="Detail" component={DashThree} />
           </Stack.Navigator>
       </NavigationContainer>
-
+  
   );
 }
 

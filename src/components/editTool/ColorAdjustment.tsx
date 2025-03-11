@@ -6,7 +6,7 @@ import ColorMixerIcon from "../../../assets/image/icons/color-mixer.png";
 import Ima12 from "../../../assets/image/icons/ima12.png";
 import Ima13 from "../../../assets/image/icons/ima13.png";
 import Ima14 from "../../../assets/image/icons/ima14.png";
-import ColorEditor from "./ColorEditor";
+import ColorBoard from "../editTools/colorTools/ColorBoard";
 import Feather from '@expo/vector-icons/Feather';
 const resetSettings = () => {
   console.log("Reset settings to default");
@@ -17,7 +17,7 @@ const ColorAdjustmentPanel = () => {
   const [selectedImage, setSelectedImage] = useState("ima12");
   const translateX = useState(new Animated.Value(0))[0];
   const imageTranslateX = useState(new Animated.Value(0))[0];
-
+  const [color, setColor] = useState("#ff0000")
   const toggleMode = (mode: string) => {
     setSelectedMode(mode);
     Animated.timing(translateX, {
@@ -51,7 +51,7 @@ const ColorAdjustmentPanel = () => {
       <SlideBar label="Shadows" initialValue={100} onValueChange={() => {}} />
 
       <Text style={styles.title}>Color Balance</Text>
-      <View style={styles.toggleContainer}>
+      {/* <View style={styles.toggleContainer}>
         <Animated.View
           style={[styles.slider, { transform: [{ translateX }] }]}
         />
@@ -83,8 +83,8 @@ const ColorAdjustmentPanel = () => {
             Color Mixer
           </Text>
         </TouchableOpacity>
-      </View>
-      <ColorEditor />
+      </View> */}
+      <ColorBoard value={color} onColorSelect={(newColor) => setColor(newColor)} />
       <TouchableOpacity style={styles.resetButton} onPress={resetSettings}>
         <Feather
           name="refresh-ccw"
