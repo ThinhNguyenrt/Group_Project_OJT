@@ -1,6 +1,6 @@
 import { ScrollView, StyleSheet, View } from "react-native"
-import MenuLeft from "../components/menuCompos/menuLeft";
-import MenuTop from "../components/menuCompos/menuTopTwo";
+import MenuLeft from "../components/menuCompos/MenuLeft";
+import MenuTop from "../components/menuCompos/MenuTop";
 
 
 const home = () => {

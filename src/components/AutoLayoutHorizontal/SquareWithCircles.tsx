@@ -1,17 +1,38 @@
 import React, { useState } from "react";
-import { View, PanResponder, TouchableOpacity } from "react-native";
+import { View, PanResponder, TouchableOpacity, GestureResponderEvent, PanResponderGestureState } from "react-native";
 import Svg, { Rect, Circle } from "react-native-svg";
 import CloseIcon from "react-native-vector-icons/AntDesign";
 
-const SquareWithCircles = () => {
-  const [position, setPosition] = useState(null);
-  const [size, setSize] = useState(null);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [isResizing, setIsResizing] = useState(false);
-  const [resizeCorner, setResizeCorner] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
+interface Position {
+  x: number;
+  y: number;
+}
 
-  const checkResizeCorner = (x, y) => {
+interface Size {
+  width: number;
+  height: number;
+}
+
+type ResizeCorner =
+  | "bottom-right"
+  | "bottom-left"
+  | "top-right"
+  | "top-left"
+  | "right"
+  | "left"
+  | "bottom"
+  | "top"
+  | null;
+
+const SquareWithCircles: React.FC = () => {
+  const [position, setPosition] = useState<Position | null>(null);
+  const [size, setSize] = useState<Size | null>(null);
+  const [isDrawing, setIsDrawing] = useState<boolean>(false);
+  const [isResizing, setIsResizing] = useState<boolean>(false);
+  const [resizeCorner, setResizeCorner] = useState<ResizeCorner>(null);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+
+  const checkResizeCorner = (x: number, y: number): ResizeCorner => {
     if (!position || !size) return null;
     const rightEdge = position.x + size.width;
     const bottomEdge = position.y + size.height;
@@ -41,7 +62,7 @@ const SquareWithCircles = () => {
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderGrant: (evt) => {
+    onPanResponderGrant: (evt: GestureResponderEvent) => {
       const { locationX, locationY } = evt.nativeEvent;
       if (!position || !size) {
         setPosition({ x: locationX, y: locationY });
@@ -64,78 +85,76 @@ const SquareWithCircles = () => {
         setIsDragging(true);
       }
     },
-    onPanResponderMove: (evt, gestureState) => {
-      if (isDrawing) {
+    onPanResponderMove: (evt: GestureResponderEvent, gestureState: PanResponderGestureState) => {
+      if (isDrawing && position) {
         setSize({
           width: Math.max(30, gestureState.moveX - position.x),
           height: Math.max(30, gestureState.moveY - position.y),
         });
-      } else if (isResizing) {
+      } else if (isResizing && position && size) {
         switch (resizeCorner) {
           case "bottom-right":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width + gestureState.dx),
-              height: Math.max(30, prev.height + gestureState.dy),
-            }));
+            setSize({
+              width: Math.max(30, size.width + gestureState.dx),
+              height: Math.max(30, size.height + gestureState.dy),
+            });
             break;
           case "bottom-left":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width - gestureState.dx),
-              height: Math.max(30, prev.height + gestureState.dy),
-            }));
-            setPosition((prev) => ({ x: prev.x + gestureState.dx, y: prev.y }));
+            setSize({
+              width: Math.max(30, size.width - gestureState.dx),
+              height: Math.max(30, size.height + gestureState.dy),
+            });
+            setPosition({ x: position.x + gestureState.dx, y: position.y });
             break;
           case "top-right":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width + gestureState.dx),
-              height: Math.max(30, prev.height - gestureState.dy),
-            }));
-            setPosition((prev) => ({ x: prev.x, y: prev.y + gestureState.dy }));
+            setSize({
+              width: Math.max(30, size.width + gestureState.dx),
+              height: Math.max(30, size.height - gestureState.dy),
+            });
+            setPosition({ x: position.x, y: position.y + gestureState.dy });
             break;
           case "top-left":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width - gestureState.dx),
-              height: Math.max(30, prev.height - gestureState.dy),
-            }));
-            setPosition((prev) => ({
-              x: prev.x + gestureState.dx,
-              y: prev.y + gestureState.dy,
-            }));
+            setSize({
+              width: Math.max(30, size.width - gestureState.dx),
+              height: Math.max(30, size.height - gestureState.dy),
+            });
+            setPosition({
+              x: position.x + gestureState.dx,
+              y: position.y + gestureState.dy,
+            });
             break;
           case "right":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width + gestureState.dx),
-              height: prev.height,
-            }));
+            setSize({
+              width: Math.max(30, size.width + gestureState.dx),
+              height: size.height,
+            });
             break;
           case "left":
-            setSize((prev) => ({
-              width: Math.max(30, prev.width - gestureState.dx),
-              height: prev.height,
-            }));
-            setPosition((prev) => ({ x: prev.x + gestureState.dx, y: prev.y }));
+            setSize({
+              width: Math.max(30, size.width - gestureState.dx),
+              height: size.height,
+            });
+            setPosition({ x: position.x + gestureState.dx, y: position.y });
             break;
           case "bottom":
-            setSize((prev) => ({
-              width: prev.width,
-              height: Math.max(30, prev.height + gestureState.dy),
-            }));
+            setSize({
+              width: size.width,
+              height: Math.max(30, size.height + gestureState.dy),
+            });
             break;
           case "top":
-            setSize((prev) => ({
-              width: prev.width,
-              height: Math.max(30, prev.height - gestureState.dy),
-            }));
-            setPosition((prev) => ({ x: prev.x, y: prev.y + gestureState.dy }));
-            break;
-          default:
+            setSize({
+              width: size.width,
+              height: Math.max(30, size.height - gestureState.dy),
+            });
+            setPosition({ x: position.x, y: position.y + gestureState.dy });
             break;
         }
-      } else if (isDragging) {
-        setPosition((prev) => ({
-          x: prev.x + gestureState.dx,
-          y: prev.y + gestureState.dy,
-        }));
+      } else if (isDragging && position) {
+        setPosition({
+          x: position.x + gestureState.dx,
+          y: position.y + gestureState.dy,
+        });
       }
     },
     onPanResponderRelease: () => {

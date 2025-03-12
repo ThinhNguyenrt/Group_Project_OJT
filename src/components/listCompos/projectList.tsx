@@ -1,13 +1,24 @@
 import React from "react";
-import { View, Text, Image, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, Image, FlatList, TouchableOpacity, StyleSheet } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
-const designs = [
+interface Design {
+  id: string;
+  name: string;
+  size: string;
+  date: string;
+}
+
+const designs: Design[] = [
   { id: "1", name: "Unnamed Design", size: "Size", date: "5 days ago" },
   { id: "2", name: "Unnamed Design", size: "Size", date: "5 days ago" }
 ];
 
-const DesignItem = ({ item }) => {
+interface DesignItemProps {
+  item: Design;
+}
+
+const DesignItem: React.FC<DesignItemProps> = ({ item }) => {
   return (
     <View style={styles.itemContainer}>
       <Image source={{ uri: "https://via.placeholder.com/50" }} style={styles.image} />
@@ -21,7 +32,7 @@ const DesignItem = ({ item }) => {
   );
 };
 
-const ActionIcons = () => {
+const ActionIcons: React.FC = () => {
   return (
     <View style={styles.iconsContainer}>
       <TouchableOpacity>
@@ -34,7 +45,7 @@ const ActionIcons = () => {
   );
 };
 
-const DesignList = () => {
+const DesignList: React.FC = () => {
   return (
     <FlatList
       data={designs}
@@ -44,7 +55,7 @@ const DesignList = () => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -79,6 +90,6 @@ const styles = {
     flexDirection: "row",
     gap: 15,
   },
-};
+});
 
 export default DesignList;

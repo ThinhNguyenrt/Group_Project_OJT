@@ -6,6 +6,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  ViewStyle,
+  TextStyle,
+  ImageStyle,
 } from "react-native"
 import { AntDesign, Feather } from "@expo/vector-icons"
 import Logo from "../../../assets/image/icons/image1.png"
@@ -14,8 +17,10 @@ import Image8 from "../../../assets/image/icons/image8.png"
 import Image9 from "../../../assets/image/icons/image9.png"
 import Image10 from "../../../assets/image/icons/image10.png"
 import Slider from "@react-native-community/slider"
-const OtherThing = () => {
-  const [aspectRatio, setAspectRatio] = React.useState(50)
+
+const OtherThing: React.FC = () => {
+  const [aspectRatio, setAspectRatio] = React.useState<number>(50)
+
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.content}>
       {/* Phần hình ảnh trên cùng */}
@@ -95,7 +100,10 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#f9f9f9",
     padding: 16,
-    alignSelf: "center", // Căn giữa nội dung
+    alignSelf: "center",
+  },
+  content: {
+    
   },
   topImage: {
     height: 64,
@@ -116,13 +124,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   profileImage: {
-    width: 36, // Giảm kích thước ảnh profile
+    width: 36,
     height: 36,
     borderRadius: 25,
     marginBottom: 8,
   },
   profileName: {
-    fontSize: 14, // Giảm kích thước chữ
+    fontSize: 14,
     fontWeight: "bold",
   },
   profileDesc: {
@@ -132,12 +140,12 @@ const styles = StyleSheet.create({
   card: {
     flexDirection: "column",
     backgroundColor: "white",
-    padding: 8, // Giảm padding
+    padding: 8,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    marginBottom: 20, // Giảm khoảng cách
+    marginBottom: 20,
     elevation: 3,
     height: 130,
     width: 230,
@@ -151,58 +159,58 @@ const styles = StyleSheet.create({
   },
   cardText: {
     flex: 1,
-    marginLeft: 8, // Giảm khoảng cách
+    marginLeft: 8,
     marginTop: 20,
   },
   cardTitle: {
-    fontSize: 14, // Giảm kích thước chữ
+    fontSize: 14,
     fontWeight: "bold",
   },
   cardSubtitle: {
-    fontSize: 10, // Giảm kích thước chữ
+    fontSize: 10,
     color: "gray",
   },
   circle: {
-    width: 40, // Kích thước hình tròn
+    width: 40,
     height: 40,
-    borderRadius: 20, // Đường kính chia 2 để tạo hình tròn
-    backgroundColor: "white", // Màu nền trắng
-    justifyContent: "center", // Căn giữa icon theo chiều dọc
-    alignItems: "center", // Căn giữa icon theo chiều ngang
-    shadowColor: "#000", // Tạo bóng (nếu cần)
+    borderRadius: 20,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 3, // Đổ bóng cho Android
+    elevation: 3,
     marginBottom: 13,
   },
   newDesignSection: {
     flexDirection: "row",
-    alignItems: "center", // Căn giữa theo chiều dọc
-    justifyContent: "space-between", // Phân bố đều các phần tử
+    alignItems: "center",
+    justifyContent: "space-between",
     backgroundColor: "#EBE7FE",
-    paddingHorizontal: 16, // Tăng khoảng cách hai bên
+    paddingHorizontal: 16,
     paddingVertical: 12,
-    borderRadius: 12, // Làm mềm góc
+    borderRadius: 12,
     marginBottom: 15,
-    width: 250, // Đảm bảo kích thước vừa phải
+    width: 250,
     height: 80,
   },
   newDesignText: {
-    fontSize: 16, // Tăng kích thước chữ một chút để cân đối
+    fontSize: 16,
     fontWeight: "500",
     textAlign: "center",
-    flex: 1, // Đẩy text nằm giữa
+    flex: 1,
   },
   cardTwo: {
     marginTop: 15,
     flexDirection: "row",
     backgroundColor: "white",
-    padding: 8, // Giảm padding
+    padding: 8,
     borderRadius: 8,
     shadowColor: "#000",
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    marginBottom: 20, // Giảm khoảng cách
+    marginBottom: 20,
     elevation: 3,
     height: 50,
     width: 210,
@@ -216,20 +224,19 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: "gray",
   },
-
   iconImage: {
-    width: 30, // Giảm kích thước icon
+    width: 30,
     height: 30,
     borderRadius: 8,
     marginRight: 8,
   },
   emptyText: {
-    fontSize: 16, // Giảm kích thước chữ
+    fontSize: 16,
     fontWeight: "bold",
     marginBottom: 4,
   },
   editText: {
-    fontSize: 12, // Giảm kích thước chữ
+    fontSize: 12,
     color: "gray",
   },
   closeButton: {

@@ -2,13 +2,41 @@ import React, { useState } from "react";
 import { StyleSheet, View, SafeAreaView, ScrollView, Text, TouchableOpacity, Image, Dimensions } from "react-native";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-const categories = ["3D Renders", "Nature", "Travel", "Animals", "People", "Food & Drink", "Arts & Culture"];
-const filters = [
+interface Category {
+  name: string;
+}
+
+interface Filter {
+  name: string;
+  icon: string;
+}
+
+interface GridImage {
+  uri: string | number;
+  height: number;
+  text?: {
+    title: string;
+    date: string;
+    description: string;
+  };
+}
+
+const categories: Category[] = [
+  { name: "3D Renders" },
+  { name: "Nature" },
+  { name: "Travel" },
+  { name: "Animals" },
+  { name: "People" },
+  { name: "Food & Drink" },
+  { name: "Arts & Culture" }
+];
+
+const filters: Filter[] = [
   { name: "Recent", icon: "clock" },
   { name: "Hot", icon: "fire" },
 ];
 
-const gridData = [
+const gridData: GridImage[][] = [
   [
     { uri: "https://img.freepik.com/premium-photo/display-beauty-products-with-bottle-liquid-shelf_192217-624.jpg?w=360", height: 500 },
     { uri: "https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsb2ZmaWNlMV9zYXR1cm5faW5fdGhlX3N0eWxlX29mX3Bhc3RlbF9kcmVhbXlfY2hhcm1pbmdfd19hNTM4MGNkYi00ZGNmLTQzODYtYWEyZS03YzZlZDczNjI3ODRfMi5qcGc.jpg", height: 300 },
@@ -32,9 +60,9 @@ const gridData = [
   ],
 ];
 
-const dashTwo = () => {
-  const [selectedFilter, setSelectedFilter] = useState("Recent");
-  const [selectedCategory, setSelectedCategory] = useState(null);
+const DashTwo: React.FC = () => {
+  const [selectedFilter, setSelectedFilter] = useState<string>("Recent");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -49,15 +77,15 @@ const dashTwo = () => {
               <TouchableOpacity
                 key={index}
                 style={styles.categoryButton}
-                onPress={() => setSelectedCategory(item)} // Cập nhật trạng thái khi bấm
+                onPress={() => setSelectedCategory(item.name)}
               >
                 <Text
                   style={[
                     styles.categoryText,
-                    selectedCategory === item ? styles.boldText : null, // Nếu được chọn, đổi màu
+                    selectedCategory === item.name ? styles.boldText : null,
                   ]}
                 >
-                  {item}
+                  {item.name}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -95,8 +123,8 @@ const dashTwo = () => {
                   <Image
                     source={
                       typeof image.uri === "string"
-                        ? { uri: image.uri } // Nếu là URL, dùng `uri`
-                        : image.uri // Nếu là ảnh cục bộ, truyền trực tiếp
+                        ? { uri: image.uri }
+                        : image.uri
                     }
                     style={{
                       width: "100%",
@@ -139,35 +167,33 @@ const dashTwo = () => {
 };
 
 const styles = StyleSheet.create({
-
   container: { flex: 1, backgroundColor: "#f8f8f8", padding: 0 },
-  header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10, alignItems: "center" ,marginLeft:20},
+  header: { flexDirection: "row", justifyContent: "space-between", marginBottom: 10, alignItems: "center", marginLeft: 20 },
   categoryContainer: { flexDirection: "row", flex: 1 },
   categoryButton: { paddingHorizontal: 10, paddingVertical: 5 },
-  categoryText: { fontSize: 16, color: "#333" }, // Mặc định là màu đen
-  boldText: { fontWeight: "bold", color: "#000000" }, // Khi được chọn thì màu xanh
-
+  categoryText: { fontSize: 16, color: "#333" },
+  boldText: { fontWeight: "bold", color: "#000000" },
   filterWrapper: {
     alignItems: "flex-end",
-    paddingRight: 10, // Đẩy container Recent/Hot vào sát lề phải khoảng 10px  
+    paddingRight: 10,
     paddingTop: 5
   },
-
   filterContainer: { flexDirection: "row", borderRadius: 10, backgroundColor: "#F7F7F7", padding: 5 },
   filterButton: { flexDirection: "row", alignItems: "center", padding: 8, borderRadius: 10 },
   activeFilterButton: { backgroundColor: "white" },
   filterText: { marginLeft: 5, color: "#333" },
-
+  filterIcon: { marginRight: 5 },
+  icon: { marginRight: 5 },
   gridContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    gap: 10,  // Chỉnh khoảng cách ngang 10px  
-    paddingHorizontal: 20, // Đảm bảo hình không sát lề  
+    gap: 10,
+    paddingHorizontal: 20
   },
   column: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "column"
   },
   overlay: {
     position: "absolute",
@@ -176,20 +202,18 @@ const styles = StyleSheet.create({
     right: 0,
     backgroundColor: "white",
     padding: 8,
-    borderRadius: 5,
-
-    
+    borderRadius: 5
   },
-  overlayContainer:{flexDirection:"row"},
+  overlayContainer: { flexDirection: "row" },
   overlayImage: {
     width: 25,
     height: 25,
     borderRadius: 20,
-    marginRight: 5,
+    marginRight: 5
   },
   overlayTitle: { color: "black", fontWeight: "bold", fontSize: 16 },
-  overlayDate: { color: "black", fontSize: 14, marginLeft:150 },
-  overlayDescription: { color: "black", fontSize: 14 },
+  overlayDate: { color: "black", fontSize: 14, marginLeft: 150 },
+  overlayDescription: { color: "black", fontSize: 14 }
 });
 
-export default dashTwo;
+export default DashTwo;

@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, View, Platform } from 'react-native';
 import HomeScreen from '../actions/home';
-import DashThree from '../components/dashboard/dashThree';
-import AiEdit from '../components/generate/aiEdit';
+import DashThree from '../components/dashboard/DashThree';
+import AiEdit from '../components/generate/AiEdit';
 
 const Stack = createStackNavigator();
 

@@ -1,16 +1,16 @@
 import React from "react";
-import { View, Image, StyleSheet, FlatList } from "react-native";
-import Svg, { Path } from "react-native-svg";
-import arrow from  '../../../assets/image/vector/arrow.png'
+import { View, Image, StyleSheet, ImageSourcePropType } from "react-native";
+import arrow from  '../../../assets/image/vector/arrow.png';
 
-const Vector = () => {
+interface VectorProps {}
 
+const Vector: React.FC<VectorProps> = () => {
   return (
     <View style={styles.container}>
-      <Image source={arrow} style={styles.image} />
+      <Image source={arrow as ImageSourcePropType} style={styles.image} />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

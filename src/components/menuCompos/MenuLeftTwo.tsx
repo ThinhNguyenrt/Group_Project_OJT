@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, ViewStyle, TextStyle } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
-const MenuLeftTwo = () => {
+const MenuLeftTwo: React.FC = () => {
   return (
     <View style={styles.container}>
       {/* Group 1 */}
@@ -51,8 +51,6 @@ const MenuLeftTwo = () => {
   );
 };
 
-export default MenuLeftTwo;
-
 const styles = StyleSheet.create({
   container: {
     padding: 10,
@@ -96,6 +94,7 @@ const styles = StyleSheet.create({
     elevation: 3,
     alignSelf: "flex-start",
     marginTop: 150,
-    
   },
 });
+
+export default MenuLeftTwo;

@@ -6,6 +6,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
+  ViewStyle,
+  TextStyle,
 } from "react-native"
 import AntDesign from "@expo/vector-icons/AntDesign"
 import FontAwesome from "@expo/vector-icons/FontAwesome"
@@ -13,7 +15,7 @@ import Feather from "@expo/vector-icons/Feather"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
 
 import Home from "../dashboard/DashboardMain"
-import Discovery from "../dashboard/dashTwo"
+import Discovery from "../dashboard/DashTwo"
 import MyProject from "../dashboard/MyProject"
 import TrashList from "../dashboard/TrashList"
 import AiEdit from "../generate/AiEdit"
@@ -21,13 +23,15 @@ import AiEdit from "../generate/AiEdit"
 const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
 
-const menuLeft = () => {
-  const [activeScreen, setActiveScreen] = useState("Home")
+type ScreenType = "Home" | "Discovery" | "MyProject" | "TrashList" | "AiEdit"
+
+const MenuLeft: React.FC = () => {
+  const [activeScreen, setActiveScreen] = useState<ScreenType>("Home")
+
   return (
     <View style={styles.container}>
       <View style={styles.menuContainer}>
         {/* Group 1 */}
-
         <TouchableOpacity
           style={[
             styles.menuItem,
@@ -75,7 +79,6 @@ const menuLeft = () => {
         <View style={styles.divider} />
 
         {/* Group 2 */}
-
         <TouchableOpacity
           style={[
             styles.menuItem,
@@ -130,7 +133,6 @@ const menuLeft = () => {
   )
 }
 
-export default menuLeft
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -138,20 +140,20 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   menuItem: {
-    flexDirection: "row", // Icon and text in the same row
-    alignItems: "center", // Center vertically
-    marginVertical: 10, // Add spacing between items
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 10,
     marginLeft: 20,
   },
   text: {
-    marginLeft: 10, // Space between icon and text
+    marginLeft: 10,
     fontSize: 15,
     color: "black",
   },
   divider: {
     height: 1,
-    backgroundColor: "#ccc", // Light gray line
-    marginVertical: 20, // Space above and below the line,
+    backgroundColor: "#ccc",
+    marginVertical: 20,
     width: 260,
   },
   bottomSection: {
@@ -230,11 +232,13 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   menuContainer: {
-    width: screenWidth * 0.2, // Chiếm 20% màn hình
+    width: screenWidth * 0.2,
   },
   contentContainer: {
-    width: screenWidth * 0.773, // Chiếm 75% màn hình
-    height: screenHeight * 0.89, // Giữ tỷ lệ chiều cao
+    width: screenWidth * 0.773,
+    height: screenHeight * 0.89,
     marginLeft: 20,
   },
 })
+
+export default MenuLeft

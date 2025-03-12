@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, FlatList, ImageSourcePropType } from "react-native";
 import React from "react";
 import { MaterialIcons } from '@expo/vector-icons';
 import Image10 from "../../../assets/image/icons/image10.png";
@@ -8,7 +8,14 @@ import Image21 from "../../../assets/aiToolImage/image21.png";
 import Image22 from "../../../assets/aiToolImage/image22.png";
 import Image23 from "../../../assets/aiToolImage/image23.png";
 
-const data = [
+interface DataItem {
+    id: string;
+    image: ImageSourcePropType;
+    name: string;
+    size: string;
+}
+
+const data: DataItem[] = [
     { id: "1", image: Image10, name: "Name", size: "94 Kb" },
     { id: "2", image: Image19, name: "Cloud", size: "674 Kb" },
     { id: "3", image: Image20, name: "Land", size: "315 Kb" },
@@ -17,8 +24,8 @@ const data = [
     { id: "6", image: Image23, name: "Dragon", size: "737 Kb" },
 ];
 
-const ManipulationTool = () => {
-    const renderItem = ({ item }) => (
+const ManipulationTool: React.FC = () => {
+    const renderItem = ({ item }: { item: DataItem }) => (
         <TouchableOpacity style={styles.listItem} activeOpacity={0.7} onPress={() => console.log("Clicked", item.name)}>
             <Image source={item.image} style={styles.itemImage} />
             <View style={styles.itemInfo}>

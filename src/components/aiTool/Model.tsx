@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, TextInput, FlatList, Image, StyleSheet, ImageSourcePropType } from 'react-native';
 import model from '../../../assets/image/ModelImage/ModelImage.png';
 
-const models = [
+interface ModelItem {
+  id: string;
+  image: ImageSourcePropType;
+}
+
+const models: ModelItem[] = [
   { id: '1', image: model },
   { id: '2', image: model },
   { id: '3', image: model },
@@ -11,8 +16,8 @@ const models = [
   { id: '6', image: model },
 ];
 
-const ModelListScreen = () => {
-  const [search, setSearch] = useState('');
+const ModelListScreen: React.FC = () => {
+  const [search, setSearch] = useState<string>('');
   
   const filteredModels = models.filter(model => model.id.includes(search));
 
