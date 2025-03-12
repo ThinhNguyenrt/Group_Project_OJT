@@ -9,16 +9,11 @@ import {
   ViewStyle,
   TextStyle,
 } from "react-native"
+import { useRouter } from 'expo-router'
 import AntDesign from "@expo/vector-icons/AntDesign"
 import FontAwesome from "@expo/vector-icons/FontAwesome"
 import Feather from "@expo/vector-icons/Feather"
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6"
-
-import Home from "../dashboard/DashboardMain"
-import Discovery from "../dashboard/DashTwo"
-import MyProject from "../dashboard/MyProject"
-import TrashList from "../dashboard/TrashList"
-import AiEdit from "../generate/AiEdit"
 
 const screenWidth = Dimensions.get("window").width
 const screenHeight = Dimensions.get("window").height
@@ -27,6 +22,12 @@ type ScreenType = "Home" | "Discovery" | "MyProject" | "TrashList" | "AiEdit"
 
 const MenuLeft: React.FC = () => {
   const [activeScreen, setActiveScreen] = useState<ScreenType>("Home")
+  const router = useRouter()
+
+  const handleNavigation = (screen: ScreenType) => {
+    setActiveScreen(screen)
+    router.push(`/(tabs)/${screen.toLowerCase()}`)
+  }
 
   return (
     <View style={styles.container}>
@@ -37,7 +38,7 @@ const MenuLeft: React.FC = () => {
             styles.menuItem,
             activeScreen === "Home" && styles.backgroundButton,
           ]}
-          onPress={() => setActiveScreen("Home")}
+          onPress={() => handleNavigation("Home")}
         >
           <AntDesign name="home" size={22} color="black" />
           <Text style={styles.text}>Home</Text>
@@ -48,7 +49,7 @@ const MenuLeft: React.FC = () => {
             styles.menuItem,
             activeScreen === "AiEdit" && styles.backgroundButton,
           ]}
-          onPress={() => setActiveScreen("AiEdit")}
+          onPress={() => handleNavigation("AiEdit")}
         >
           <Text style={styles.text}>New</Text>
         </TouchableOpacity>
@@ -58,7 +59,7 @@ const MenuLeft: React.FC = () => {
             styles.menuItem,
             activeScreen === "Discovery" && styles.backgroundButton,
           ]}
-          onPress={() => setActiveScreen("Discovery")}
+          onPress={() => handleNavigation("Discovery")}
         >
           <FontAwesome name="safari" size={19} color="black" />
           <Text style={styles.text}>Discovery</Text>
@@ -69,7 +70,7 @@ const MenuLeft: React.FC = () => {
             styles.menuItem,
             activeScreen === "MyProject" && styles.backgroundButton,
           ]}
-          onPress={() => setActiveScreen("MyProject")}
+          onPress={() => handleNavigation("MyProject")}
         >
           <Feather name="folder" size={20} color="black" />
           <Text style={styles.text}>My Project</Text>
@@ -84,7 +85,7 @@ const MenuLeft: React.FC = () => {
             styles.menuItem,
             activeScreen === "TrashList" && styles.backgroundButton,
           ]}
-          onPress={() => setActiveScreen("TrashList")}
+          onPress={() => handleNavigation("TrashList")}
         >
           <Feather name="trash-2" size={20} color="black" />
           <Text style={styles.text}>Trash</Text>
@@ -119,15 +120,6 @@ const MenuLeft: React.FC = () => {
             </TouchableOpacity>
           </View>
         </View>
-      </View>
-
-      {/* Content View */}
-      <View style={styles.contentContainer}>
-        {activeScreen === "Home" && <Home />}
-        {activeScreen === "Discovery" && <Discovery />}
-        {activeScreen === "MyProject" && <MyProject />}
-        {activeScreen === "TrashList" && <TrashList />}
-        {activeScreen === "AiEdit" && <AiEdit />}
       </View>
     </View>
   )
