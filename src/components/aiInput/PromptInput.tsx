@@ -1,10 +1,11 @@
-import React from 'react';
-import { View, TextInput, StyleSheet, Image } from 'react-native';
-import sendIcon from 'react-native-vector-icons/MaterialCommunityIcons';
+import React, { useState } from 'react';
+import { View, TextInput, StyleSheet, Image, ImageSourcePropType } from 'react-native';
 import sparkles from '../../../assets/image/AiInputImage/sparkles.png';
-import send from '../../../assets/image/AiInputImage/send.png'
+import send from '../../../assets/image/AiInputImage/send.png';
 
-const PromptInput = () => {
+const PromptInput: React.FC = () => {
+  const [inputText, setInputText] = useState<string>('');
+
   return (
     <View style={styles.container}>
       {/* Thay Icon bằng Image */}
@@ -13,6 +14,8 @@ const PromptInput = () => {
         placeholder="Describe the image you want to generate"
         placeholderTextColor="gray"
         style={styles.input}
+        value={inputText}
+        onChangeText={setInputText}
       />
       <Image source={send} style={styles.iconRight} />
     </View>

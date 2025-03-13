@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity, Picker } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity, ViewStyle, TextStyle, ImageStyle } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 import Feather from "@expo/vector-icons/Feather";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -13,22 +14,49 @@ import Image4 from "../../../assets/image/icons/image4.png";
 import Image5 from "../../../assets/image/icons/image5.png";
 import Avatar from "../../../assets/image/icons/image6.png";
 
-const menuTop = () => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [zoomLevel, setZoomLevel] = useState("50%");
-  const [selectedIcon, setSelectedIcon] = useState(null);
-  const options = [
+interface Option {
+  key: string;
+  label: string;
+  image: any;
+}
+
+interface Styles {
+  container: ViewStyle;
+  leftContainer: ViewStyle;
+  leftSection: ViewStyle;
+  logo: ImageStyle;
+  projectName: TextStyle;
+  iconLeft: ViewStyle;
+  rightSection: ViewStyle;
+  topRow: ViewStyle;
+  picker: ViewStyle;
+  exportButton: ViewStyle;
+  exportText: TextStyle;
+  avatar: ImageStyle;
+  optionButton: ViewStyle;
+  selectedOption: ViewStyle;
+  optionImage: ImageStyle;
+  optionText: TextStyle;
+  selectedButton: ViewStyle;
+}
+
+const MenuTop: React.FC = () => {
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [zoomLevel, setZoomLevel] = useState<string>("50%");
+  const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+
+  const options: Option[] = [
     { key: "img2", label: "Upscale", image: Image2 },
     { key: "img3", label: "Adjust", image: Image3 },
     { key: "img4", label: "Eraser", image: Image4 },
     { key: "img5", label: "Extend", image: Image5 },
   ];
 
-  const handleOptionPress = (key) => {
+  const handleOptionPress = (key: string): void => {
     setSelectedOption(selectedOption === key ? null : key);
   };
 
-  const handleIconPress = (icon) => {
+  const handleIconPress = (icon: string): void => {
     setSelectedIcon(icon === selectedIcon ? null : icon);
   };
 
@@ -67,7 +95,11 @@ const menuTop = () => {
               <Text style={styles.optionText}>{label}</Text>
             </TouchableOpacity>
           ))}
-          <Picker selectedValue={zoomLevel} style={styles.picker} onValueChange={(itemValue) => setZoomLevel(itemValue)}>
+          <Picker
+            selectedValue={zoomLevel}
+            style={styles.picker}
+            onValueChange={(itemValue: string) => setZoomLevel(itemValue)}
+          >
             <Picker.Item label="10%" value="10%" />
             <Picker.Item label="25%" value="25%" />
             <Picker.Item label="50%" value="50%" />
@@ -85,9 +117,7 @@ const menuTop = () => {
   );
 };
 
-export default menuTop;
-
-const styles = StyleSheet.create({
+const styles = StyleSheet.create<Styles>({
   container: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -178,3 +208,5 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
   },
 });
+
+export default MenuTop;

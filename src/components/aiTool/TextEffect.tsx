@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, Image, TextInput, FlatList, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TextInput, FlatList, TouchableOpacity, ImageSourcePropType } from "react-native";
 import React from "react";
 import { MaterialIcons } from '@expo/vector-icons'; 
 
@@ -11,10 +11,14 @@ import Image16 from "../../../assets/aiToolImage/image16.png";
 import Image17 from "../../../assets/aiToolImage/image17.png";
 import Image18 from "../../../assets/aiToolImage/image18.png";
 
-const images = [Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18];
+const images: ImageSourcePropType[] = [Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18];
 
-const TextEffect = () => {
-    const renderItem = ({ item }) => (
+interface RenderItemProps {
+    item: ImageSourcePropType;
+}
+
+const TextEffect: React.FC = () => {
+    const renderItem = ({ item }: RenderItemProps) => (
         <TouchableOpacity activeOpacity={0.7}>
             <Image source={item} style={styles.image} />
         </TouchableOpacity>

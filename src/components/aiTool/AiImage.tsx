@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
-import { View, TextInput, FlatList, Image, Text, StyleSheet } from 'react-native';
+import { View, TextInput, FlatList, Image, Text, StyleSheet, ImageSourcePropType } from 'react-native';
 import AiImage from '../../../assets/image/AiImage/AiImage.png';
 
-const images = [
+interface ImageItem {
+  id: string;
+  source: ImageSourcePropType;
+}
+
+const images: ImageItem[] = [
   { id: '1', source: AiImage },
   { id: '2', source: AiImage },
   { id: '3', source: AiImage },
@@ -14,8 +19,8 @@ const images = [
   { id: '9', source: AiImage },
 ];
 
-const ImageGallery = () => {
-  const [search, setSearch] = useState('');
+const ImageGallery: React.FC = () => {
+  const [search, setSearch] = useState<string>('');
   
   const filteredImages = images.filter(img => img.id.includes(search));
 

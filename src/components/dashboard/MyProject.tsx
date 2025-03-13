@@ -11,7 +11,7 @@ import {
 } from "react-native"
 import Icon from "react-native-vector-icons/MaterialCommunityIcons"
 import AntDesign from "react-native-vector-icons/AntDesign"
-import menuLeft from "../menuCompos/menuLeft"
+import menuLeft from "../menuCompos/MenuLeft"
 
 const folders = [
   { id: "1", name: "Account", files: 12 },

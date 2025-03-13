@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, ScrollView, Image, TouchableOpacity, ImageSourcePropType } from "react-native";
 import React, { useState } from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Image24 from "../../../assets/aiToolImage/image24.png";
@@ -11,8 +11,10 @@ import Image30 from "../../../assets/aiToolImage/image30.png";
 import Image31 from "../../../assets/aiToolImage/image31.png";
 import Image32 from "../../../assets/aiToolImage/image32.png";
 
-const LayerTool = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+const LayerTool: React.FC = () => {
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+
+  const imageArray: ImageSourcePropType[] = [Image27, Image28, Image29, Image30, Image31];
 
   return (
     <View style={styles.container}>
@@ -43,7 +45,7 @@ const LayerTool = () => {
 
         {isExpanded && (
           <View style={styles.expandedContainer}>
-            {[Image27, Image28, Image29, Image30, Image31].map((img, index, array) => (
+            {imageArray.map((img, index, array) => (
               <View key={index} style={styles.row}>
                 {/* Đường thẳng nối liền */}
                 {index !== array.length  && <View style={styles.verticalLine} />}

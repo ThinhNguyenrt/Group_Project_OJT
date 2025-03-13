@@ -1,10 +1,10 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, ViewStyle, TextStyle, ImageStyle } from "react-native";
 import { Feather, Ionicons } from "@expo/vector-icons";
 import Logo from "../../../assets/image/icons/image1.png";
 import Avatar from "../../../assets/image/icons/image6.png";
 
-const menuTopTwo = () => {
+const MenuTopTwo: React.FC = () => {
   return (
     <View style={styles.container}>
       {/* Bên trái */}
@@ -15,7 +15,6 @@ const menuTopTwo = () => {
 
       {/* Bên phải */}
       <View style={styles.rightContainer}>
-
         <View style={styles.searchBox}>
           <Feather name="search" size={20} color="#888" style={styles.searchIcon} />
           <TextInput placeholder="Search files" style={styles.searchInput} />
@@ -26,7 +25,7 @@ const menuTopTwo = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.marginRight}>
-            <Feather name="settings" size={20} color="black" style={styles.icon}/>
+          <Feather name="settings" size={20} color="black" style={styles.icon}/>
         </TouchableOpacity>
 
         <Image source={Avatar} style={styles.avatar} />
@@ -35,8 +34,6 @@ const menuTopTwo = () => {
   );
 };
 
-export default menuTopTwo;
-
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
@@ -44,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
     paddingVertical: 10,
-    backgroundColor: '#E8E8E8',
+    backgroundColor: "#E8E8E8",
   },
   leftContainer: {
     flexDirection: "row",
@@ -74,7 +71,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     height: 35,
-    width:250,
+    width: 250,
     marginRight: 50,
   },
   searchIcon: {
@@ -86,9 +83,8 @@ const styles = StyleSheet.create({
     width: 200,
     height: 25,
     borderWidth: 0,
-    outlineStyle: "none",  //xóa viền focus theo ios, web
-    textDecorationLine: "none", //xóa gạch chân
-    fontFamily: 'Arial',
+    textDecorationLine: "none",
+    fontFamily: "Arial",
   },
   icon: {
     marginHorizontal: 10,
@@ -104,3 +100,5 @@ const styles = StyleSheet.create({
     marginRight: 30,
   }
 });
+
+export default MenuTopTwo;
