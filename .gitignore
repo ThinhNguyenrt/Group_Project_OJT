@@ -36,3 +36,7 @@ package-lock.json
 
 # typescript
 *.tsbuildinfo
+
+.idea/
+.vscode/
+android/
