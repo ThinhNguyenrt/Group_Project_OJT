@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import AiEdit from '../../../components/generate/AiEdit';
+import AiEdit from '../../../components/generate/aiEdit';
 
 const AiEditScreen = () => {
   return (
